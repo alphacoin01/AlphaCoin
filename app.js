@@ -277,26 +277,44 @@ document.addEventListener("DOMContentLoaded", () => {
     updateCountdown();
     setInterval(updateCountdown, 1000);
 
-    const menuBtn = document.getElementById("menuBtn");
+   /* ===========================
+   MOBILE MENU
+=========================== */
 
+const menuBtn = document.getElementById("menuBtn");
 const mobileMenu = document.getElementById("mobileMenu");
-
 const menuOverlay = document.getElementById("menuOverlay");
 
-menuBtn.addEventListener("click",()=>{
+if (menuBtn && mobileMenu && menuOverlay) {
 
-    mobileMenu.classList.toggle("active");
+    menuBtn.addEventListener("click", () => {
 
-    menuOverlay.classList.toggle("active");
+        menuBtn.classList.toggle("active");
+        mobileMenu.classList.toggle("active");
+        menuOverlay.classList.toggle("active");
 
-});
+    });
 
-menuOverlay.addEventListener("click",()=>{
+    menuOverlay.addEventListener("click", () => {
 
-    mobileMenu.classList.remove("active");
+        menuBtn.classList.remove("active");
+        mobileMenu.classList.remove("active");
+        menuOverlay.classList.remove("active");
 
-    menuOverlay.classList.remove("active");
+    });
 
-});
+    document.querySelectorAll(".mobile-menu a").forEach(link => {
+
+        link.addEventListener("click", () => {
+
+            menuBtn.classList.remove("active");
+            mobileMenu.classList.remove("active");
+            menuOverlay.classList.remove("active");
+
+        });
+
+    });
+
+}
 
 });
