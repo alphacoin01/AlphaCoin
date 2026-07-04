@@ -74,10 +74,10 @@ rgba(122,92,255,.10),
 transparent 30%),
 
 linear-gradient(
-180deg,
-#050611,
-#0A1020,
-#11162B);
+135deg,
+#2DDCFF,
+#6EF4FF
+);
 
     overflow-x: hidden;
 
@@ -219,20 +219,15 @@ nav a:hover::after{
     transform:rotate(-8deg) scale(1.05);
 
 }
-
 .logo span{
-  font-size:24px;
-    font-weight:800;
-    letter-spacing:2px;
 
-    background:linear-gradient(90deg,var(--primary),var(--gold));
-
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
-
-
+background:linear-gradient(
+135deg,
+#ffffff,
+#2DDCFF,
+#FF3ED5
+);
 }
-
 .hero h1{
 
     font-size:72px;
