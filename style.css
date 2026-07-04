@@ -1,27 +1,43 @@
 
 :root {
 
-    --bg: #0B1118;
-    --bg2: #0E1620;
+   --bg:#070814;
+    --bg2:#11162B;
 
-    --card: rgba(20, 28, 38, 0.75);
+    /* Tarjetas */
 
-    --text: #FFFFFF;
-    --text-soft: #B9C4D3;
+    --card:rgba(17,22,43,.78);
 
-    --primary: #31D7D5;
-    --primary-light: #71F6EF;
+    /* Color principal (azul eléctrico del logo) */
 
-    --gold: #F5C66E;
+    --primary:#2DDCFF;
 
-    --border: rgba(255, 255, 255, 0.07);
+    --primary-light:#6EF4FF;
 
-    --shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+    /* Color secundario (magenta del logo) */
 
-    --bg-gradient:
-        radial-gradient(circle at 15% 10%, rgba(49,215,213,.18), transparent 28%),
-        radial-gradient(circle at 85% 70%, rgba(245,198,110,.12), transparent 32%),
-        linear-gradient(180deg, #0B1118, #0E1620, #090E14);
+    --secondary:#FF3ED5;
+
+    --secondary-light:#FF77EA;
+
+    /* Acento */
+
+    --accent:#7A5CFF;
+
+    /* Texto */
+
+    --white:#FFFFFF;
+
+    --text:#C6D2FF;
+
+    /* Bordes */
+
+    --border:rgba(95,160,255,.12);
+
+    /* Sombras */
+
+    --shadow:
+        0 20px 60px rgba(0,0,0,.45);
 }
 *{
 
@@ -43,7 +59,25 @@ html{
 
     color: var(--text);
 
-    background: var(--bg-gradient);
+   background:
+
+radial-gradient(circle at 15% 10%,
+rgba(45,220,255,.18),
+transparent 30%),
+
+radial-gradient(circle at 90% 70%,
+rgba(255,62,213,.14),
+transparent 35%),
+
+radial-gradient(circle at 60% 20%,
+rgba(122,92,255,.10),
+transparent 30%),
+
+linear-gradient(
+180deg,
+#050611,
+#0A1020,
+#11162B);
 
     overflow-x: hidden;
 
