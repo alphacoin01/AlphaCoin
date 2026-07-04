@@ -26,35 +26,59 @@
 
 <body>
 
-<!-- NAV -->
 <nav>
+
     <a href="index.html" class="logo">
-    <img src="nuevologo.png" alt="logo">
-    <span>ALPHA</span>
-   
-</a>
-    <ul>
+        <img src="nuevologo.png" alt="logo">
+        <span>ALPHA</span>
+    </a>
+
+    <ul class="nav-links">
+
         <li><a href="about.html">About</a></li>
         <li><a href="tokenomics.html">Tokenomics</a></li>
         <li><a href="roadmap.html">Roadmap</a></li>
         <li><a href="docs.html">Docs</a></li>
-        
+
     </ul>
+
+    <button class="menu-btn" id="menuBtn">
+
+        <span></span>
+        <span></span>
+        <span></span>
+
+    </button>
 
     <button class="wallet-btn" id="connectWallet">
 
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+        ...
 
-        <path d="M3 7.5A2.5 2.5 0 015.5 5h13A2.5 2.5 0 0121 7.5v9A2.5 2.5 0 0118.5 19h-13A2.5 2.5 0 013 16.5v-9z" stroke="currentColor" stroke-width="2"/>
+    </button>
 
-        <circle cx="17" cy="12" r="1.5" fill="currentColor"/>
-
-    </svg>
-
-    <span>Connect Wallet</span>
-
-</button>
 </nav>
+
+<div class="menu-overlay" id="menuOverlay"></div>
+
+<aside class="mobile-menu" id="mobileMenu">
+
+    <div class="mobile-header">
+
+        <img src="nuevologo.png">
+
+        <span>ALPHA</span>
+
+    </div>
+
+    <a href="about.html">About</a>
+
+    <a href="tokenomics.html">Tokenomics</a>
+
+    <a href="roadmap.html">Roadmap</a>
+
+    <a href="docs.html">Docs</a>
+
+</aside>
 
 <!-- DASHBOARD -->
 <div class="wallet-dashboard">

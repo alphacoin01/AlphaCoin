@@ -241,10 +241,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    /* ==================================================
-       COUNTDOWN (NUEVO - AÑADIDO)
-    ================================================== */
-
     const launchDate = new Date("July 10, 2026 00:00:00").getTime();
 
     const daysEl = document.getElementById("days");
@@ -280,5 +276,27 @@ document.addEventListener("DOMContentLoaded", () => {
 
     updateCountdown();
     setInterval(updateCountdown, 1000);
+
+    const menuBtn = document.getElementById("menuBtn");
+
+const mobileMenu = document.getElementById("mobileMenu");
+
+const menuOverlay = document.getElementById("menuOverlay");
+
+menuBtn.addEventListener("click",()=>{
+
+    mobileMenu.classList.toggle("active");
+
+    menuOverlay.classList.toggle("active");
+
+});
+
+menuOverlay.addEventListener("click",()=>{
+
+    mobileMenu.classList.remove("active");
+
+    menuOverlay.classList.remove("active");
+
+});
 
 });
