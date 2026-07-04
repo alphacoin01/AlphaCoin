@@ -645,3 +645,265 @@ footer p{
     }
 
 }
+
+.nav-links{
+
+    display:flex;
+    align-items:center;
+    gap:34px;
+
+    list-style:none;
+
+}
+
+.nav-links a{
+
+    position:relative;
+
+    text-decoration:none;
+
+    color:var(--text);
+
+    font-weight:600;
+
+    transition:.3s;
+
+}
+
+.nav-links a::after{
+
+    content:"";
+
+    position:absolute;
+
+    bottom:-8px;
+    left:0;
+
+    width:0;
+    height:2px;
+
+    background:var(--primary);
+
+    transition:.3s;
+
+}
+
+.nav-links a:hover{
+
+    color:#fff;
+
+}
+
+.nav-links a:hover::after{
+
+    width:100%;
+
+}
+
+/* DERECHA */
+
+.nav-right{
+
+    display:flex;
+    align-items:center;
+    gap:15px;
+
+}
+
+/* HAMBURGUESA */
+
+.menu-btn{
+
+    display:none;
+
+    width:48px;
+    height:48px;
+
+    border:none;
+
+    border-radius:14px;
+
+    background:rgba(255,255,255,.05);
+
+    cursor:pointer;
+
+    justify-content:center;
+    align-items:center;
+
+    flex-direction:column;
+
+    gap:6px;
+
+}
+
+.menu-btn span{
+
+    width:22px;
+    height:2px;
+
+    background:white;
+
+    transition:.3s;
+
+}
+
+.menu-btn.active span:nth-child(1){
+
+    transform:translateY(8px) rotate(45deg);
+
+}
+
+.menu-btn.active span:nth-child(2){
+
+    opacity:0;
+
+}
+
+.menu-btn.active span:nth-child(3){
+
+    transform:translateY(-8px) rotate(-45deg);
+
+}
+
+/* PANEL */
+
+.mobile-menu{
+
+    position:fixed;
+
+    top:0;
+    right:-320px;
+
+    width:300px;
+
+    height:100vh;
+
+    background:#111827;
+
+    backdrop-filter:blur(20px);
+
+    border-left:1px solid rgba(255,255,255,.08);
+
+    transition:.35s;
+
+    z-index:10001;
+
+    padding:30px;
+
+}
+
+.mobile-menu.active{
+
+    right:0;
+
+}
+
+.mobile-header{
+
+    display:flex;
+    align-items:center;
+    gap:12px;
+
+    margin-bottom:40px;
+
+}
+
+.mobile-header img{
+
+    width:55px;
+
+}
+
+.mobile-header span{
+
+    font-size:24px;
+    font-weight:700;
+
+}
+
+.mobile-links{
+
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+
+}
+
+.mobile-links a{
+
+    color:white;
+
+    text-decoration:none;
+
+    font-size:18px;
+
+    padding:12px 0;
+
+    border-bottom:1px solid rgba(255,255,255,.08);
+
+}
+
+/* FONDO */
+
+.menu-overlay{
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.55);
+
+    opacity:0;
+
+    visibility:hidden;
+
+    transition:.3s;
+
+    z-index:10000;
+
+}
+
+.menu-overlay.active{
+
+    opacity:1;
+
+    visibility:visible;
+
+}
+
+/*==================================
+          RESPONSIVE
+==================================*/
+
+@media(max-width:900px){
+
+    .nav-links{
+
+        display:none;
+
+    }
+
+    .wallet-btn{
+
+        display:none;
+
+    }
+
+    .menu-btn{
+
+        display:flex;
+
+    }
+
+}
+
+@media(min-width:901px){
+
+    .mobile-menu,
+    .menu-overlay{
+
+        display:none;
+
+    }
+
+}
