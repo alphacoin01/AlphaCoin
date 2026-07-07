@@ -1294,3 +1294,50 @@ main{
     color:var(--text-soft);
 
 }
+.social-links{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:22px;
+
+    margin-bottom:30px;
+
+}
+
+.social-links a{
+
+    width:58px;
+
+    height:58px;
+
+    border-radius:18px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-decoration:none;
+
+    background:rgba(255,255,255,.04);
+
+    border:1px solid rgba(255,255,255,.06);
+
+    transition:.35s;
+
+}
+
+.social-links a:hover{
+
+    transform:translateY(-6px);
+
+    background:linear-gradient(
+        135deg,
+        #31D7D5,
+        #71F6EF
+    );
+
+}
