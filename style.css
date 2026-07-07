@@ -237,31 +237,42 @@ main{
 }
 .menu-btn{
 
-    width:46px;
-    height:46px;
+    width:48px;
+    height:48px;
 
-    background:none;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
 
+    gap:6px;
+
+    background:transparent;
     border:none;
 
     cursor:pointer;
-
-    flex-direction:column;
-
-    justify-content:center;
-
-    gap:6px;
 
 }
 
 .menu-btn span{
 
-    width:100%;
+    display:block;
+
+    width:28px;
     height:3px;
 
-    background:#fff;
+    background:#FFFFFF;   /* Blanco */
 
-    border-radius:30px;
+    border-radius:999px;
+
+    transition:.3s ease;
+
+    
+}
+
+.menu-btn:hover span{
+
+    background:#39CFFF;
 
 }
 .side-menu{
