@@ -1202,3 +1202,225 @@ footer p{
     color:#081116;
 
 }
+
+.wallet-card,
+.exchange-panel,
+.countdown,
+.contract-box,
+.info-card{
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+.wallet-card::before,
+.exchange-panel::before,
+.countdown::before,
+.contract-box::before,
+.info-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:-1px;
+
+    border-radius:inherit;
+
+    background:linear-gradient(
+        135deg,
+        rgba(57,207,255,.12),
+        transparent,
+        rgba(255,79,216,.08)
+    );
+
+    opacity:0;
+
+    transition:.35s;
+
+    pointer-events:none;
+
+}
+
+.wallet-card:hover::before,
+.exchange-panel:hover::before,
+.countdown:hover::before,
+.contract-box:hover::before,
+.info-card:hover::before{
+
+    opacity:1;
+
+}
+
+.exchange-panel:hover,
+.wallet-card:hover,
+.contract-box:hover,
+.info-card:hover,
+.countdown:hover{
+
+    border-color:rgba(57,207,255,.25);
+
+    box-shadow:
+        0 25px 60px rgba(0,0,0,.45);
+
+}
+
+.wallet-btn,
+.swap-btn,
+.trade-btn,
+.contract-btn{
+
+    transition:
+        transform .25s,
+        box-shadow .25s,
+        opacity .25s;
+
+}
+
+.wallet-btn:hover,
+.swap-btn:hover,
+.trade-btn:hover,
+.contract-btn:hover{
+
+    transform:translateY(-4px);
+
+}
+
+.wallet-btn:active,
+.swap-btn:active,
+.trade-btn:active,
+.contract-btn:active{
+
+    transform:scale(.97);
+
+}
+.exchange-row input,
+.exchange-row select{
+
+    transition:.3s;
+
+}
+
+.exchange-row input:focus,
+.exchange-row select:focus{
+
+    color:#39CFFF;
+
+}
+a{
+
+    transition:.3s;
+
+}
+
+a:hover{
+
+    opacity:.95;
+
+}
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(30px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+.wallet-dashboard,
+.contract-section,
+.info-grid,
+footer{
+
+    animation:fadeUp .8s ease;
+
+}
+@keyframes floating{
+
+    0%{
+
+        transform:translateY(0);
+
+    }
+
+    50%{
+
+        transform:translateY(-6px);
+
+    }
+
+    100%{
+
+        transform:translateY(0);
+
+    }
+
+}
+
+.logo img{
+
+    animation:floating 5s ease-in-out infinite;
+
+}
+@media(max-width:768px){
+
+    .contract-actions{
+
+        flex-direction:column;
+
+    }
+
+    .contract-btn{
+
+        width:100%;
+
+    }
+
+    .info-card{
+
+        padding:28px;
+
+    }
+
+}
+
+@media(max-width:480px){
+
+    body{
+
+        font-size:15px;
+
+    }
+
+    .wallet-dashboard{
+
+        margin-top:120px;
+
+    }
+
+    .contract-section h2{
+
+        font-size:34px;
+
+    }
+
+    .info-card h3{
+
+        font-size:24px;
+
+    }
+
+}
