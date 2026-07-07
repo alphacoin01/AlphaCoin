@@ -31,7 +31,7 @@
     --shadow:
         0 20px 60px rgba(0,0,0,.55);
 
-        background:linear-gradient(90deg,var(--primary),var(--secondary));
+    background:linear-gradient(90deg,var(--primary),var(--secondary));
 
     /* Fondo */
 
@@ -1437,5 +1437,80 @@ transition:.35s;
 padding:35px;
 
 z-index:10000;
+
+}
+
+.nav-right{
+    display:flex;
+    align-items:center;
+    gap:16px;
+}
+
+.mobile-menu.active{
+    left:0;
+}
+
+.menu-overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.55);
+    opacity:0;
+    visibility:hidden;
+    transition:.3s;
+    z-index:9998;
+}
+
+.menu-overlay.active{
+    opacity:1;
+    visibility:visible;
+}
+
+.mobile-header{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-bottom:40px;
+}
+
+.mobile-header img{
+    width:55px;
+    height:auto;
+}
+
+.mobile-links{
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+}
+
+.mobile-links a{
+    color:#fff;
+    text-decoration:none;
+    font-size:18px;
+}
+
+@media (max-width:980px){
+
+    .menu-btn{
+        display:flex;
+    }
+
+    .wallet-btn{
+        display:none;
+    }
+
+    .nav-links{
+        display:none;
+    }
+
+}
+
+@media (min-width:981px){
+
+    .menu-btn,
+    .mobile-menu,
+    .menu-overlay{
+        display:none;
+    }
 
 }
