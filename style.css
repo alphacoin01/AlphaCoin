@@ -266,3 +266,240 @@ main{
     border-radius:30px;
 
 }
+.side-menu{
+
+    position:fixed;
+
+    top:0;
+    left:-320px;
+
+    width:300px;
+    height:100vh;
+
+    background:#081122;
+
+    border-right:1px solid var(--border);
+
+    backdrop-filter:blur(30px);
+
+    padding:35px;
+
+    transition:.35s;
+
+    z-index:1200;
+
+    display:flex;
+    flex-direction:column;
+
+}
+
+.side-menu.active{
+
+    left:0;
+
+}
+
+.side-header{
+
+    display:flex;
+    align-items:center;
+
+    gap:14px;
+
+    margin-bottom:45px;
+
+}
+
+.side-header img{
+
+    width:46px;
+
+}
+
+.side-header h2{
+
+    font-size:22px;
+
+}
+
+.side-links{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:10px;
+
+}
+
+.side-links a{
+
+    padding:16px;
+
+    border-radius:14px;
+
+    transition:.3s;
+
+    color:white;
+
+    font-weight:600;
+
+}
+
+.side-links a:hover{
+
+    background:rgba(255,255,255,.05);
+
+    color:var(--primary);
+
+}
+.menu-overlay{
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.6);
+
+    backdrop-filter:blur(4px);
+
+    opacity:0;
+
+    visibility:hidden;
+
+    transition:.3s;
+
+    z-index:1100;
+
+}
+
+.menu-overlay.active{
+
+    opacity:1;
+
+    visibility:visible;
+
+}
+.menu-btn.active span:nth-child(1){
+
+    transform:
+        rotate(45deg)
+        translateY(9px);
+
+}
+
+.menu-btn.active span:nth-child(2){
+
+    opacity:0;
+
+}
+
+.menu-btn.active span:nth-child(3){
+
+    transform:
+        rotate(-45deg)
+        translateY(-9px);
+
+}
+@media (max-width:980px){
+
+    .menu-btn{
+
+        display:flex;
+
+    }
+
+    .wallet-btn span{
+
+        display:none;
+
+    }
+
+    .wallet-btn{
+
+        width:50px;
+        padding:0;
+
+    }
+
+}
+
+@media (min-width:981px){
+
+    .side-menu,
+    .menu-overlay{
+
+        display:none;
+
+    }
+
+}
+.wallet-dashboard{
+
+    width:min(1200px,92%);
+
+    margin:150px auto 70px;
+
+    display:grid;
+
+    gap:25px;
+
+    justify-items:center;
+
+}
+.card{
+
+    background:var(--card);
+
+    border:1px solid var(--border);
+
+    backdrop-filter:blur(20px);
+
+    border-radius:24px;
+
+    box-shadow:var(--shadow);
+
+}
+.countdown{
+
+    width:430px;
+
+    padding:28px;
+
+    text-align:center;
+
+    background:var(--card);
+
+    border-radius:24px;
+
+    border:1px solid var(--border);
+
+}
+
+.countdown h2{
+
+    color:var(--primary);
+
+    margin-bottom:18px;
+
+    font-size:15px;
+
+    letter-spacing:2px;
+
+    text-transform:uppercase;
+
+}
+
+#timer{
+
+    font-size:36px;
+
+    font-weight:800;
+
+}
+
+#timer span{
+
+    color:var(--primary);
+
+}
