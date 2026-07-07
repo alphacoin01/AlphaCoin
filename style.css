@@ -59,65 +59,6 @@
 
 }
 
-:root{
-
-    /* Fondo */
-
-    --bg:#040816;
-    --bg2:#081122;
-
-    /* Tarjetas */
-
-    --card:rgba(10,18,35,.78);
-
-    /* Texto */
-
-    --text:#FFFFFF;
-    --text-soft:#B8C7E8;
-
-    /* Colores del logo */
-
-    --primary:#39CFFF;
-    --primary-light:#79E8FF;
-
-    --secondary:#FF4FD8;
-
-    /* Bordes */
-
-    --border:rgba(70,140,255,.10);
-
-    /* Sombras */
-
-    --shadow:
-        0 20px 60px rgba(0,0,0,.55);
-
-    background:linear-gradient(90deg,var(--primary),var(--secondary));
-
-    /* Fondo */
-
-    --bg-gradient:
-
-        radial-gradient(circle at 15% 12%,
-        rgba(57,207,255,.12),
-        transparent 26%),
-
-        radial-gradient(circle at 88% 72%,
-        rgba(255,79,216,.10),
-        transparent 30%),
-
-        radial-gradient(circle at 50% -10%,
-        rgba(88,102,255,.12),
-        transparent 35%),
-
-        linear-gradient(
-            180deg,
-            #030611 0%,
-            #050A17 25%,
-            #081122 60%,
-            #040816 100%
-        );
-
-}
 *{
 
     margin:0;
@@ -1443,30 +1384,6 @@ nav ul{
 
 .btn:hover{
     transform:translateY(-2px);
-}
-
-/* ===========================
-   NAVBAR
-=========================== */
-
-.navbar{
-    position:fixed;
-    top:20px;
-    left:50%;
-    transform:translateX(-50%);
-    width:94%;
-    max-width:1450px;
-    height:82px;
-    padding:0 30px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    background:rgba(16,23,34,.80);
-    backdrop-filter:blur(18px);
-    border:1px solid rgba(255,255,255,.06);
-    border-radius:22px;
-    box-shadow:var(--shadow);
-    z-index:9999;
 }
 
 /* LOGO */
