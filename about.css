@@ -1,23 +1,63 @@
 
 :root{
-    --bg:#090E14;
-    --bg2:#101722;
 
-    --card:rgba(20,28,38,.72);
+    /* Fondo */
 
-    --primary:#31D7D5;
-    --primary2:#71F6EF;
+    --bg:#040816;
+    --bg2:#081122;
 
-    --gold:#F5C66E;
+    /* Tarjetas */
 
-    --text:#B9C4D3;
-    --white:#FFFFFF;
+    --card:rgba(10,18,35,.78);
 
-    --border:rgba(255,255,255,.08);
+    /* Texto */
 
-    --shadow:0 20px 60px rgba(0,0,0,.45);
+    --text:#FFFFFF;
+    --text-soft:#B8C7E8;
+
+    /* Colores del logo */
+
+    --primary:#39CFFF;
+    --primary-light:#79E8FF;
+
+    --secondary:#FF4FD8;
+
+    /* Bordes */
+
+    --border:rgba(70,140,255,.10);
+
+    /* Sombras */
+
+    --shadow:
+        0 20px 60px rgba(0,0,0,.55);
+
+    background:linear-gradient(90deg,var(--primary),var(--secondary));
+
+    /* Fondo */
+
+    --bg-gradient:
+
+        radial-gradient(circle at 15% 12%,
+        rgba(57,207,255,.12),
+        transparent 26%),
+
+        radial-gradient(circle at 88% 72%,
+        rgba(255,79,216,.10),
+        transparent 30%),
+
+        radial-gradient(circle at 50% -10%,
+        rgba(88,102,255,.12),
+        transparent 35%),
+
+        linear-gradient(
+            180deg,
+            #030611 0%,
+            #050A17 25%,
+            #081122 60%,
+            #040816 100%
+        );
+
 }
-
 *{
     margin:0;
     padding:0;
