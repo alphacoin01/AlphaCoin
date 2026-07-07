@@ -570,3 +570,139 @@ main{
     color:white;
 
 }
+.exchange-panel{
+
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+
+}
+
+.exchange-panel h3{
+
+    font-size:1.2rem;
+
+    font-weight:700;
+
+    color:#fff;
+
+    text-align:center;
+
+}
+.exchange-row{
+
+    background:rgba(255,255,255,.03);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:18px;
+
+    padding:18px;
+
+    transition:.25s;
+
+}
+
+.exchange-row:hover{
+
+    border-color:var(--primary);
+
+}
+
+.exchange-row label{
+
+    display:block;
+
+    color:var(--text-soft);
+
+    font-size:.85rem;
+
+    margin-bottom:10px;
+
+}
+
+.exchange-row select{
+
+    width:100%;
+
+    background:transparent;
+
+    color:#fff;
+
+    border:none;
+
+    outline:none;
+
+    font-size:1rem;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    appearance:none;
+
+}
+
+.exchange-row input{
+
+    width:100%;
+
+    margin-top:12px;
+
+    background:none;
+
+    border:none;
+
+    outline:none;
+
+    color:#fff;
+
+    font-size:1.4rem;
+
+    font-weight:700;
+
+}
+
+.exchange-row input::placeholder{
+
+    color:#6e7d95;
+
+}
+.swap-icon{
+
+    width:60px;
+    height:60px;
+
+    margin:auto;
+
+    border:none;
+
+    border-radius:50%;
+
+    cursor:pointer;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:linear-gradient(
+        135deg,
+        var(--primary),
+        var(--secondary)
+    );
+
+    color:white;
+
+    font-size:24px;
+
+    transition:.35s;
+
+    box-shadow:0 10px 30px rgba(57,207,255,.30);
+
+}
+
+.swap-icon:hover{
+
+    transform:rotate(180deg) scale(1.08);
+
+}
