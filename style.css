@@ -1020,3 +1020,99 @@ main{
     line-height:1.8;
 
 }
+.features-section{
+
+    width:min(1200px,92%);
+    margin:120px auto;
+
+}
+
+.features-grid{
+
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:30px;
+
+}
+
+.feature-card{
+
+    position:relative;
+
+    padding:40px;
+
+    border-radius:28px;
+
+    background:rgba(255,255,255,.04);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    backdrop-filter:blur(25px);
+
+    overflow:hidden;
+
+    transition:.35s;
+
+}
+
+.feature-card::before{
+
+    content:"";
+
+    position:absolute;
+    inset:0;
+
+    background:
+    linear-gradient(
+        135deg,
+        rgba(57,207,255,.10),
+        transparent,
+        rgba(255,79,216,.08)
+    );
+
+    opacity:0;
+
+    transition:.35s;
+
+}
+
+.feature-card:hover{
+
+    transform:translateY(-10px);
+
+    border-color:rgba(57,207,255,.35);
+
+    box-shadow:
+    0 25px 60px rgba(0,0,0,.45);
+
+}
+
+.feature-card:hover::before{
+
+    opacity:1;
+
+}
+
+.feature-card h3{
+
+    position:relative;
+
+    font-size:26px;
+
+    margin-bottom:20px;
+
+    color:#fff;
+
+}
+
+.feature-card p{
+
+    position:relative;
+
+    color:var(--text-soft);
+
+    line-height:1.8;
+
+    font-size:16px;
+
+}
