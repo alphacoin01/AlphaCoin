@@ -502,3 +502,71 @@ main{
     color:var(--primary);
 
 }
+.wallet-card{
+
+    min-height:120px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+.placeholder{
+
+    color:var(--soft);
+
+    font-size:1rem;
+
+}
+.trade-actions{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:16px;
+
+}
+
+.trade-btn{
+
+    height:58px;
+
+    border:none;
+
+    border-radius:18px;
+
+    font-size:1rem;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+}
+
+.trade-btn:hover{
+
+    transform:translateY(-3px);
+
+}
+
+.buy{
+
+    background:linear-gradient(135deg,#17D45A,#47FFA3);
+
+    color:#081116;
+
+}
+
+.sell{
+
+    background:linear-gradient(135deg,#FF6464,#FF905E);
+
+    color:white;
+
+}
