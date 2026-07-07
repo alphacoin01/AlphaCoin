@@ -31,6 +31,8 @@
     --shadow:
         0 20px 60px rgba(0,0,0,.55);
 
+        background:linear-gradient(90deg,var(--primary),var(--secondary));
+
     /* Fondo */
 
     --bg-gradient:
@@ -200,22 +202,19 @@ nav a:hover::after{
 
     display:flex;
     align-items:center;
-    gap:12px;
-
-    text-decoration:none;
+    gap:10px;
 
 }
 
 .logo img{
 
-   
     width:65px;
     transition:.3s;
 }
 
 .logo:hover img{
 
-    transform:rotate(-8deg) scale(1.05);
+    transform: rotate(-6deg) scale(1.08);
 
 }
 
