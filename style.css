@@ -58,6 +58,66 @@
         );
 
 }
+
+:root{
+
+    /* Fondo */
+
+    --bg:#040816;
+    --bg2:#081122;
+
+    /* Tarjetas */
+
+    --card:rgba(10,18,35,.78);
+
+    /* Texto */
+
+    --text:#FFFFFF;
+    --text-soft:#B8C7E8;
+
+    /* Colores del logo */
+
+    --primary:#39CFFF;
+    --primary-light:#79E8FF;
+
+    --secondary:#FF4FD8;
+
+    /* Bordes */
+
+    --border:rgba(70,140,255,.10);
+
+    /* Sombras */
+
+    --shadow:
+        0 20px 60px rgba(0,0,0,.55);
+
+    background:linear-gradient(90deg,var(--primary),var(--secondary));
+
+    /* Fondo */
+
+    --bg-gradient:
+
+        radial-gradient(circle at 15% 12%,
+        rgba(57,207,255,.12),
+        transparent 26%),
+
+        radial-gradient(circle at 88% 72%,
+        rgba(255,79,216,.10),
+        transparent 30%),
+
+        radial-gradient(circle at 50% -10%,
+        rgba(88,102,255,.12),
+        transparent 35%),
+
+        linear-gradient(
+            180deg,
+            #030611 0%,
+            #050A17 25%,
+            #081122 60%,
+            #040816 100%
+        );
+
+}
 *{
 
     margin:0;
@@ -1385,164 +1445,286 @@ nav ul{
     transform:translateY(-2px);
 }
 
+/* ===========================
+   NAVBAR
+=========================== */
+
+.navbar{
+    position:fixed;
+    top:20px;
+    left:50%;
+    transform:translateX(-50%);
+    width:94%;
+    max-width:1450px;
+    height:82px;
+    padding:0 30px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:rgba(16,23,34,.80);
+    backdrop-filter:blur(18px);
+    border:1px solid rgba(255,255,255,.06);
+    border-radius:22px;
+    box-shadow:var(--shadow);
+    z-index:9999;
+}
+
+/* LOGO */
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    text-decoration:none;
+}
+
+.logo img{
+    width:48px;
+    height:48px;
+    transition:.3s;
+}
+
+.logo:hover img{
+    transform:rotate(-6deg) scale(1.08);
+}
+
+.logo span{
+    font-size:22px;
+    font-weight:800;
+    letter-spacing:2px;
+    color:#fff;
+}
+
+/* BOTÓN HAMBURGUESA */
+
 .menu-btn{
 
-display:none;
+    width:46px;
+    height:46px;
 
-width:46px;
-height:46px;
+    display:none;
+    flex-direction:column;
+    justify-content:center;
+    gap:6px;
 
-border:none;
-
-background:none;
-
-cursor:pointer;
-
-flex-direction:column;
-
-justify-content:center;
-
-gap:6px;
+    background:none;
+    border:none;
+    cursor:pointer;
 
 }
 
 .menu-btn span{
 
-height:3px;
+    width:100%;
+    height:3px;
 
-border-radius:30px;
+    background:#fff;
 
-background:white;
+    border-radius:30px;
 
-transition:.35s;
-
-}
-
-.mobile-menu{
-
-position:fixed;
-
-top:0;
-
-left:-320px;
-
-width:300px;
-
-height:100vh;
-
-background:#101722;
-
-transition:.35s;
-
-padding:35px;
-
-z-index:10000;
-
-}
-
-.nav-right{
-    display:flex;
-    align-items:center;
-    gap:16px;
-}
-
-.mobile-menu.active{
-    left:0;
-}
-
-.menu-overlay{
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,.55);
-    opacity:0;
-    visibility:hidden;
     transition:.3s;
-    z-index:9998;
+
 }
 
-.menu-overlay.active{
-    opacity:1;
-    visibility:visible;
+.menu-btn.active span:nth-child(1){
+
+    transform:translateY(9px) rotate(45deg);
+
 }
 
-.mobile-header{
+.menu-btn.active span:nth-child(2){
+
+    opacity:0;
+
+}
+
+.menu-btn.active span:nth-child(3){
+
+    transform:translateY(-9px) rotate(-45deg);
+
+}
+
+/* ===========================
+   MENÚ LATERAL
+=========================== */
+
+.side-menu{
+
+    position:fixed;
+
+    top:0;
+    left:-320px;
+
+    width:300px;
+    height:100vh;
+
+    background:#101722;
+
+    padding:35px;
+
+    display:flex;
+    flex-direction:column;
+
+    transition:.35s;
+
+    z-index:10000;
+
+}
+
+.side-menu.active{
+
+    left:0;
+
+}
+
+.side-header{
+
     display:flex;
     align-items:center;
     gap:12px;
+
     margin-bottom:40px;
+
 }
 
-.mobile-header img{
+.side-header img{
+
     width:55px;
-    height:auto;
+
 }
 
-.mobile-links{
+.side-header h2{
+
+    font-size:22px;
+    color:#fff;
+
+}
+
+.side-links{
+
     display:flex;
     flex-direction:column;
-    gap:20px;
+    gap:18px;
+
 }
 
-.mobile-links a{
+.side-links a{
+
     color:#fff;
     text-decoration:none;
     font-size:18px;
-}
+    font-weight:600;
 
-@media (max-width:980px){
+    padding:12px 0;
 
-    .menu-btn{
-        display:flex;
-    }
-
-    .wallet-btn{
-        display:none;
-    }
-
-    .nav-links{
-        display:none;
-    }
+    transition:.3s;
 
 }
 
-@media (min-width:981px){
+.side-links a:hover{
 
-    .menu-btn,
-    .mobile-menu,
-    .menu-overlay{
-        display:none;
-    }
+    color:#31D7D5;
 
 }
 
-/* Logo */
-.logo{
+/* ===========================
+   OVERLAY
+=========================== */
+
+.menu-overlay{
+
+    position:fixed;
+    inset:0;
+
+    background:rgba(0,0,0,.55);
+
+    opacity:0;
+    visibility:hidden;
+
+    transition:.3s;
+
+    z-index:9998;
+
+}
+
+.menu-overlay.active{
+
+    opacity:1;
+    visibility:visible;
+
+}
+
+/* ===========================
+   WALLET
+=========================== */
+
+.wallet-btn{
+
     display:flex;
     align-items:center;
-    flex-shrink:0;
+    justify-content:center;
+
+    gap:10px;
+
+    height:52px;
+
+    padding:0 24px;
+
+    border:none;
+    border-radius:18px;
+
+    cursor:pointer;
+
+    font-size:15px;
+    font-weight:700;
+
+    color:#081116;
+
+    background:linear-gradient(
+        135deg,
+        #31D7D5,
+        #71F6EF
+    );
+
+    transition:.3s;
+
 }
 
-.logo img{
-    width:60px;
-    height:60px;
-    max-width:60px;
-    max-height:60px;
-    object-fit:contain;
-    display:block;
+.wallet-btn:hover{
+
+    transform:translateY(-3px);
+
 }
 
-/* Móvil */
-@media (max-width:980px){
+/* ===========================
+   RESPONSIVE
+=========================== */
 
-    .logo img{
-        width:45px !important;
-        height:45px !important;
-        max-width:45px !important;
-        max-height:45px !important;
+@media(max-width:980px){
+
+    .navbar{
+
+        width:96%;
+        padding:0 18px;
+
     }
 
-    .logo span{
-        font-size:20px;
+    .menu-btn{
+
+        display:flex;
+
+    }
+
+}
+
+@media(min-width:981px){
+
+    .side-menu,
+    .menu-overlay,
+    .menu-btn{
+
+        display:none;
+
     }
 
 }
