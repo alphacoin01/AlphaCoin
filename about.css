@@ -65,14 +65,11 @@
 }
 
 body{
-    font-family: "Space Grotesk", Inter, sans-serif;
-    color:var(--white);
-    background:
-        radial-gradient(circle at 15% 10%, rgba(49,215,213,.15), transparent 35%),
-        radial-gradient(circle at 85% 70%, rgba(245,198,110,.10), transparent 40%),
-        linear-gradient(180deg,#0B1118,#0E1620,#090E14);
-    min-height:100vh;
-    padding:40px 20px;
+     min-height:100vh;
+    font-family:"Space Grotesk",sans-serif;
+    color:var(--text);
+    background:var(--bg-gradient);
+    overflow-x:hidden;
 }
 
 .back-btn{
@@ -102,102 +99,165 @@ body{
 }
 
 .hero-about{
+
+    max-width:1200px;
+    margin:160px auto 80px;
+
+    padding:0 25px;
+
     text-align:center;
-    max-width:900px;
-    margin:120px auto 60px;
+
 }
 
 .hero-about h1{
-    font-size:54px;
+
+    font-size:72px;
     font-weight:800;
 
-    background:linear-gradient(135deg,#fff, var(--primary), var(--gold));
+    line-height:1.1;
+
+    margin-bottom:25px;
+
+    background:linear-gradient(
+        135deg,
+        #fff,
+        var(--primary),
+        var(--secondary)
+    );
+
     -webkit-background-clip:text;
     -webkit-text-fill-color:transparent;
+
 }
 
 .hero-about p{
-    margin-top:18px;
-    font-size:18px;
-    color:var(--text);
-    line-height:1.7;
-}
 
+    max-width:750px;
+
+    margin:auto;
+
+    color:var(--text-soft);
+
+    font-size:20px;
+
+    line-height:1.8;
+
+}
 .about-container{
-    max-width:1100px;
-    margin:0 auto;
-    display:flex;
-    flex-direction:column;
-    gap:26px;
+
+    max-width:1300px;
+
+    margin:auto;
+
+    padding:0 25px;
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(360px,1fr));
+
+    gap:30px;
+
+    margin-bottom:80px;
+
 }
 
 .about-card{
-    padding:30px;
-    border-radius:22px;
+
+    padding:35px;
+
+    border-radius:28px;
 
     background:var(--card);
-    border:1px solid var(--border);
 
-    backdrop-filter:blur(18px);
+    border:1px solid rgba(255,255,255,.06);
+
+    backdrop-filter:blur(20px);
 
     box-shadow:var(--shadow);
 
-    transition:.3s;
+    transition:.35s;
+
 }
 
 .about-card:hover{
-    transform:translateY(-6px);
-    border-color:rgba(49,215,213,.25);
-}
 
+    transform:translateY(-8px);
+
+    border-color:rgba(57,207,255,.25);
+
+}
 .about-card h2{
-    font-size:22px;
-    margin-bottom:12px;
+
     color:var(--primary);
+
+    font-size:26px;
+
+    margin-bottom:18px;
+
 }
 
 .about-card p{
-    color:var(--text);
-    line-height:1.8;
-}
 
+    color:var(--text-soft);
+
+    line-height:1.9;
+
+    font-size:16px;
+
+}
 .ecosystem-grid,
 .values{
-    margin-top:18px;
+
+    margin-top:25px;
+
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-    gap:16px;
+
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+
+    gap:20px;
+
 }
 
 .ecosystem-item,
 .value-box{
-    padding:18px;
-    border-radius:18px;
+
+    padding:22px;
+
+    border-radius:20px;
 
     background:rgba(255,255,255,.03);
-    border:1px solid rgba(255,255,255,.06);
+
+    border:1px solid rgba(255,255,255,.05);
 
     transition:.3s;
+
 }
 
 .ecosystem-item:hover,
 .value-box:hover{
-    transform:translateY(-4px);
+
+    transform:translateY(-5px);
+
     border-color:var(--primary);
+
 }
 
 .ecosystem-item h3,
 .value-box h3{
-    color:var(--gold);
-    margin-bottom:8px;
-    font-size:16px;
+
+    color:var(--primary);
+
+    margin-bottom:10px;
+
+    font-size:18px;
+
 }
 
 .ecosystem-item p,
 .value-box p{
-    font-size:14px;
-    color:var(--text);
-    line-height:1.6;
+
+    color:var(--text-soft);
+
 }
 
 /* =========================
@@ -842,33 +902,28 @@ footer p{
 
 @media(max-width:900px){
 
-    .nav-links{
+.hero-about{
 
-        display:none;
-
-    }
-
-    .wallet-btn{
-
-        display:none;
-
-    }
-
-    .menu-btn{
-
-        display:flex;
-
-    }
+    margin-top:140px;
 
 }
 
-@media(min-width:901px){
+.hero-about h1{
 
-    .mobile-menu,
-    .menu-overlay{
+    font-size:48px;
 
-        display:none;
+}
 
-    }
+.hero-about p{
+
+    font-size:17px;
+
+}
+
+.about-container{
+
+    grid-template-columns:1fr;
+
+}
 
 }
