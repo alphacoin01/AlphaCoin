@@ -28,24 +28,33 @@
 
 <!-- ================= NAVBAR ================= -->
 
-<nav>
+<!-- ================= NAVBAR ================= -->
 
-    <!-- LOGO -->
+<nav class="navbar">
+
     <a href="index.html" class="logo">
-        <img src="logoalpha.png" alt="logo">
+        <img src="logoalpha.png" alt="ALPHA">
         <span>ALPHA</span>
     </a>
 
-    <!-- MENÚ PC -->
-    <ul class="nav-links">
-        <li><a href="about.html">About</a></li>
-        <li><a href="tokenomics.html">Tokenomics</a></li>
-        <li><a href="roadmap.html">Roadmap</a></li>
-        <li><a href="docs.html">Docs</a></li>
-    </ul>
+    <button class="menu-btn" id="menuBtn" aria-label="Open menu">
 
-    <!-- BOTONES DERECHA -->
-    <div class="nav-right">
+        <span></span>
+        <span></span>
+        <span></span>
+
+    </button>
+
+<!-- ================= NAVBAR ================= -->
+
+<nav class="navbar">
+
+    <a href="index.html" class="logo">
+        <img src="logoalpha.png" alt="ALPHA">
+        <span>ALPHA</span>
+    </a>
+
+    <div class="nav-actions">
 
         <button class="wallet-btn" id="connectWallet">
 
@@ -60,49 +69,36 @@
 
         </button>
 
-        <!-- MENÚ HAMBURGUESA -->
-        <button class="menu-btn" id="menuBtn" aria-label="Open Menu">
-
+        <button class="menu-btn" id="menuBtn" aria-label="Open menu">
             <span></span>
             <span></span>
             <span></span>
-
         </button>
 
     </div>
 
 </nav>
 
-<!-- OVERLAY -->
-
 <div class="menu-overlay" id="menuOverlay"></div>
 
-<!-- MENÚ MÓVIL -->
+<aside class="side-menu" id="sideMenu">
 
-<aside class="mobile-menu" id="mobileMenu">
-
-    <div class="mobile-header">
-
+    <div class="side-header">
         <img src="logoalpha.png" alt="ALPHA">
-
-        <span>ALPHA</span>
-
+        <h2>ALPHA</h2>
     </div>
 
-    <nav class="mobile-links">
+    <nav class="side-links">
 
+        <a href="index.html">Home</a>
         <a href="about.html">About</a>
-
         <a href="tokenomics.html">Tokenomics</a>
-
         <a href="roadmap.html">Roadmap</a>
-
         <a href="docs.html">Docs</a>
 
     </nav>
 
 </aside>
-
 <!-- DASHBOARD -->
 <div class="wallet-dashboard">
 

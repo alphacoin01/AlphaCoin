@@ -277,44 +277,37 @@ document.addEventListener("DOMContentLoaded", () => {
     updateCountdown();
     setInterval(updateCountdown, 1000);
 
-   /* ===========================
-   MOBILE MENU
+/* ===========================
+   HAMBURGER MENU
 =========================== */
 
 const menuBtn = document.getElementById("menuBtn");
-const mobileMenu = document.getElementById("mobileMenu");
+const sideMenu = document.getElementById("sideMenu");
 const menuOverlay = document.getElementById("menuOverlay");
 
-if (menuBtn && mobileMenu && menuOverlay) {
+function closeMenu() {
+    menuBtn.classList.remove("active");
+    sideMenu.classList.remove("active");
+    menuOverlay.classList.remove("active");
+}
+
+if (menuBtn && sideMenu && menuOverlay) {
 
     menuBtn.addEventListener("click", () => {
 
         menuBtn.classList.toggle("active");
-        mobileMenu.classList.toggle("active");
+        sideMenu.classList.toggle("active");
         menuOverlay.classList.toggle("active");
 
     });
 
-    menuOverlay.addEventListener("click", () => {
+    menuOverlay.addEventListener("click", closeMenu);
 
-        menuBtn.classList.remove("active");
-        mobileMenu.classList.remove("active");
-        menuOverlay.classList.remove("active");
+    document.querySelectorAll(".side-links a").forEach(link => {
 
-    });
-
-    document.querySelectorAll(".mobile-menu a").forEach(link => {
-
-        link.addEventListener("click", () => {
-
-            menuBtn.classList.remove("active");
-            mobileMenu.classList.remove("active");
-            menuOverlay.classList.remove("active");
-
-        });
+        link.addEventListener("click", closeMenu);
 
     });
 
 }
-
 });
