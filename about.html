@@ -3,40 +3,48 @@
 
 <head>
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>ALPHA • About</title>
+<title>ALPHA • About</title>
 
-    <link rel="icon" href="logoalpha.png">
-    <link rel="stylesheet" href="about.css">
+<link rel="icon" href="logoalpha.png">
+<link rel="stylesheet" href="about.css">
 
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700;800&display=swap" rel="stylesheet">
 
 </head>
 
 <body>
 
-<!-- ================= NAVBAR ================= -->
+<!--================ NAVBAR ================-->
 
 <header class="nav">
 
     <a href="index.html" class="logo">
+
         <img src="logoalpha.png" alt="ALPHA">
+
         <span>ALPHA</span>
+
     </a>
 
     <div class="nav-actions">
 
-        <button class="wallet-btn">
+        <button class="wallet-btn" id="connectWallet">
 
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
 
-                <path d="M3 7.5A2.5 2.5 0 015.5 5h13A2.5 2.5 0 0121 7.5v9A2.5 2.5 0 0118.5 19h-13A2.5 2.5 0 013 16.5v-9z"
+                <path
+                    d="M3 7.5A2.5 2.5 0 015.5 5h13A2.5 2.5 0 0121 7.5v9A2.5 2.5 0 0118.5 19h-13A2.5 2.5 0 013 16.5v-9z"
                     stroke="currentColor"
                     stroke-width="2"/>
 
-                <circle cx="17" cy="12" r="1.5" fill="currentColor"/>
+                <circle
+                    cx="17"
+                    cy="12"
+                    r="1.5"
+                    fill="currentColor"/>
 
             </svg>
 
@@ -56,7 +64,7 @@
 
 </header>
 
-<!-- ================= MENU ================= -->
+<!--================ MENU ================-->
 
 <div class="menu-overlay" id="menuOverlay"></div>
 
@@ -64,7 +72,7 @@
 
     <div class="side-header">
 
-        <img src="logoalpha.png" alt="ALPHA">
+        <img src="logoalpha.png">
 
         <h2>ALPHA</h2>
 
@@ -86,202 +94,294 @@
 
 </aside>
 
-<!-- ================= HERO ================= -->
+<!--================ HERO ================-->
 
-<section class="hero-about">
+<section class="hero">
 
-    <h1>About ALPHA</h1>
+    <div class="hero-badge">
+
+        ABOUT ALPHA
+
+    </div>
+
+    <h1>
+
+        Building the Future<br>
+
+        of Solana
+
+    </h1>
 
     <p>
 
-        Building a scalable ecosystem on Solana focused on community,
-        transparency and long-term innovation.
+        ALPHA is creating a modern blockchain ecosystem powered by
+        transparency, community and long-term innovation.
 
     </p>
 
-</section>
+    <div class="hero-buttons">
 
-<!-- ================= ABOUT ================= -->
+        <a href="docs.html" class="primary-btn">
 
-<section class="about-container">
+            Read Docs
 
-    <article class="about-card">
+        </a>
 
-        <h2>What is ALPHA?</h2>
+        <a href="roadmap.html" class="secondary-btn">
 
-        <p>
+            Roadmap
 
-            ALPHA is a blockchain ecosystem built on Solana focused on creating
-            a transparent, scalable and community-driven project with real utility
-            and sustainable long-term growth.
-
-        </p>
-
-    </article>
-
-    <article class="about-card">
-
-        <h2>Why Solana?</h2>
-
-        <p>
-
-            Solana offers lightning-fast transactions, low fees and exceptional
-            scalability, making it the perfect foundation for the ALPHA ecosystem.
-
-        </p>
-
-    </article>
-
-    <article class="about-card">
-
-        <h2>Mission</h2>
-
-        <p>
-
-            Build an accessible decentralized ecosystem where everyone can
-            participate while maintaining security, transparency and innovation.
-
-        </p>
-
-    </article>
-
-    <article class="about-card">
-
-        <h2>Vision</h2>
-
-        <p>
-
-            Become one of the strongest communities within the Solana ecosystem
-            while continuously expanding utilities and partnerships.
-
-        </p>
-
-    </article>
-
-</section>
-
-<!-- ================= ECOSYSTEM ================= -->
-
-<section class="about-container">
-
-    <article class="about-card">
-
-        <h2>Future Ecosystem</h2>
-
-        <div class="ecosystem-grid">
-
-            <div class="ecosystem-item">
-
-                <h3>Community Hub</h3>
-
-                <p>Community-driven participation and growth.</p>
-
-            </div>
-
-            <div class="ecosystem-item">
-
-                <h3>Staking</h3>
-
-                <p>Reward mechanisms for long-term holders.</p>
-
-            </div>
-
-            <div class="ecosystem-item">
-
-                <h3>Governance</h3>
-
-                <p>Community participation in ecosystem decisions.</p>
-
-            </div>
-
-            <div class="ecosystem-item">
-
-                <h3>Partnerships</h3>
-
-                <p>Collaborations across the blockchain industry.</p>
-
-            </div>
-
-        </div>
-
-    </article>
-
-</section>
-
-<!-- ================= VALUES ================= -->
-
-<section class="about-container">
-
-    <article class="about-card">
-
-        <h2>Core Values</h2>
-
-        <div class="values">
-
-            <div class="value-box">
-
-                <h3>Transparency</h3>
-
-                <p>Open communication and honest development.</p>
-
-            </div>
-
-            <div class="value-box">
-
-                <h3>Security</h3>
-
-                <p>Building reliable systems for everyone.</p>
-
-            </div>
-
-            <div class="value-box">
-
-                <h3>Innovation</h3>
-
-                <p>Continuous improvement and evolution.</p>
-
-            </div>
-
-            <div class="value-box">
-
-                <h3>Community</h3>
-
-                <p>The holders are the center of the project.</p>
-
-            </div>
-
-        </div>
-
-    </article>
-
-</section>
-
-<!-- ================= FOOTER ================= -->
-
-<footer>
-
-    <div class="footer-logo">
-
-        <img src="logoalpha.png" alt="ALPHA">
-
-        <h2>ALPHA</h2>
+        </a>
 
     </div>
 
-    <div class="social-links">
+</section>
+<!--================ ABOUT =================-->
 
-        <a href="https://x.com/alpha_coin_?s=11" target="_blank">X</a>
+<section class="about-section">
 
-        <a href="https://t.me/tuusuario" target="_blank">Telegram</a>
+    <div class="section-title">
 
-        <a href="https://www.tiktok.com/@alpha_coin?_r=1&_t=ZN-97fUJeknmkQ" target="_blank">TikTok</a>
+        <span>WHO WE ARE</span>
+
+        <h2>Designed for the Future</h2>
+
+        <p>
+            ALPHA is building a modern ecosystem where speed,
+            transparency and community come together to create
+            long-term value.
+        </p>
 
     </div>
 
-    <p>© 2026 ALPHA • Built on Solana</p>
+    <div class="about-grid">
 
-</footer>
+        <article class="about-card">
 
+            <div class="card-icon">⚡</div>
+
+            <h3>Built on Solana</h3>
+
+            <p>
+
+                Lightning-fast transactions with extremely low fees,
+                providing a smooth experience for every user.
+
+            </p>
+
+        </article>
+
+        <article class="about-card">
+
+            <div class="card-icon">👥</div>
+
+            <h3>Community First</h3>
+
+            <p>
+
+                Every decision is focused on creating value for holders
+                through transparency and participation.
+
+            </p>
+
+        </article>
+
+        <article class="about-card">
+
+            <div class="card-icon">🚀</div>
+
+            <h3>Scalable</h3>
+
+            <p>
+
+                ALPHA is designed to expand beyond a token into a
+                complete blockchain ecosystem.
+
+            </p>
+
+        </article>
+
+        <article class="about-card">
+
+            <div class="card-icon">🔒</div>
+
+            <h3>Secure</h3>
+
+            <p>
+
+                Security and reliability are the foundation of every
+                future product inside the ALPHA ecosystem.
+
+            </p>
+
+        </article>
+
+    </div>
+
+</section>
+
+<!--================ ECOSYSTEM =================-->
+
+<section class="ecosystem">
+
+    <div class="section-title">
+
+        <span>FUTURE ECOSYSTEM</span>
+
+        <h2>More Than a Token</h2>
+
+        <p>
+            ALPHA is designed to become a complete ecosystem with
+            utilities that continue growing over time.
+        </p>
+
+    </div>
+
+    <div class="ecosystem-grid">
+
+        <div class="ecosystem-card">
+
+            <div class="eco-icon">🚀</div>
+
+            <h3>Staking</h3>
+
+            <p>
+
+                Earn rewards while helping secure the ecosystem.
+
+            </p>
+
+        </div>
+
+        <div class="ecosystem-card">
+
+            <div class="eco-icon">👥</div>
+
+            <h3>Community Hub</h3>
+
+            <p>
+
+                Events, campaigns and exclusive benefits for holders.
+
+            </p>
+
+        </div>
+
+        <div class="ecosystem-card">
+
+            <div class="eco-icon">🗳</div>
+
+            <h3>Governance</h3>
+
+            <p>
+
+                Vote on future decisions and ecosystem upgrades.
+
+            </p>
+
+        </div>
+
+        <div class="ecosystem-card">
+
+            <div class="eco-icon">🤝</div>
+
+            <h3>Partnerships</h3>
+
+            <p>
+
+                Strategic collaborations across the blockchain industry.
+
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+<!--================ VALUES =================-->
+
+<section class="values-section">
+
+    <div class="section-title">
+
+        <span>CORE VALUES</span>
+
+        <h2>Built Around Principles</h2>
+
+        <p>
+
+            Everything inside ALPHA follows the same philosophy:
+            transparency, security and continuous innovation.
+
+        </p>
+
+    </div>
+
+    <div class="values-grid">
+
+        <div class="value-card">
+
+            <span class="number">01</span>
+
+            <h3>Transparency</h3>
+
+            <p>
+
+                Open communication and clear development
+                with the community.
+
+            </p>
+
+        </div>
+
+        <div class="value-card">
+
+            <span class="number">02</span>
+
+            <h3>Security</h3>
+
+            <p>
+
+                Building reliable infrastructure for
+                long-term sustainability.
+
+            </p>
+
+        </div>
+
+        <div class="value-card">
+
+            <span class="number">03</span>
+
+            <h3>Innovation</h3>
+
+            <p>
+
+                Constant improvements focused on
+                future blockchain technologies.
+
+            </p>
+
+        </div>
+
+        <div class="value-card">
+
+            <span class="number">04</span>
+
+            <h3>Community</h3>
+
+            <p>
+
+                The ecosystem grows together
+                with every holder.
+
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
 <script src="app.js"></script>
 
 </body>
