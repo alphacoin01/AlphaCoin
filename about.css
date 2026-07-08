@@ -1124,6 +1124,10 @@ section{
     transform:translateY(-8px) rotate(-45deg);
 
 }
+/*=========================
+      MENU LATERAL
+=========================*/
+
 .side-menu{
 
     position:fixed;
@@ -1134,24 +1138,25 @@ section{
     width:320px;
     height:100vh;
 
-    background:#081122;
+    padding:35px 30px;
+
+    background:rgba(10,18,35,.95);
+
+    backdrop-filter:blur(24px);
 
     border-left:1px solid rgba(255,255,255,.08);
 
-    backdrop-filter:blur(25px);
+    box-shadow:-15px 0 40px rgba(0,0,0,.45);
 
-    transition:.35s;
+    transition:right .35s ease;
 
-    z-index:9999;
-
-    padding:35px;
+    z-index:10001;
 
 }
 
 .side-menu.active{
 
-    right:0;
-
+       left:0;
 }
 .side-header{
 
@@ -1168,11 +1173,15 @@ section{
 
     width:70px;
 
+    filter:drop-shadow(0 0 15px rgba(57,207,255,.4));
+
 }
 
 .side-header h2{
 
     font-size:28px;
+
+    font-weight:800;
 
     color:white;
 
@@ -1180,23 +1189,26 @@ section{
 .side-links{
 
     display:flex;
+
     flex-direction:column;
 
-    gap:20px;
+    gap:12px;
 
 }
 
 .side-links a{
 
-    color:white;
+    padding:16px 18px;
+
+    border-radius:14px;
 
     text-decoration:none;
 
-    font-size:18px;
+    color:#fff;
 
-    padding:16px 0;
+    font-size:17px;
 
-    border-bottom:1px solid rgba(255,255,255,.08);
+    font-weight:600;
 
     transition:.3s;
 
@@ -1204,9 +1216,11 @@ section{
 
 .side-links a:hover{
 
-    color:#39CFFF;
+    background:rgba(57,207,255,.12);
 
-    padding-left:10px;
+    color:var(--primary);
+
+    transform:translateX(8px);
 
 }
 .menu-overlay{
@@ -1215,7 +1229,9 @@ section{
 
     inset:0;
 
-    background:rgba(0,0,0,.6);
+    background:rgba(0,0,0,.65);
+
+    backdrop-filter:blur(4px);
 
     opacity:0;
 
@@ -1223,7 +1239,7 @@ section{
 
     transition:.35s;
 
-    z-index:9998;
+    z-index:10000;
 
 }
 
