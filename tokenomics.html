@@ -1,49 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ALPHA Tokenomics</title>
-<link rel="stylesheet" href="tokenomics.css">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ALPHA • Tokenomics</title>
+
+    <link rel="icon" href="logoalpha.png">
+    <link rel="stylesheet" href="tokenomics.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700;800&display=swap" rel="stylesheet">
 
 </head>
+
 <body>
-<!-- ================= NAVBAR ================= -->
 
-<nav>
+<!--================ NAVBAR ================-->
 
-    <!-- LOGO -->
+<header class="nav">
+
     <a href="index.html" class="logo">
-        <img src="logoalpha.png" alt="ALPHA Logo">
+
+        <img src="logoalpha.png" alt="ALPHA">
+
         <span>ALPHA</span>
+
     </a>
 
-    <!-- MENÚ PC -->
-    <ul class="nav-links">
-        <li><a href="about.html">About</a></li>
-        <li><a href="tokenomics.html">Tokenomics</a></li>
-        <li><a href="roadmap.html">Roadmap</a></li>
-        <li><a href="docs.html">Docs</a></li>
-    </ul>
-
-    <!-- BOTONES DERECHA -->
-    <div class="nav-right">
+    <div class="nav-actions">
 
         <button class="wallet-btn" id="connectWallet">
 
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-                <path d="M3 7.5A2.5 2.5 0 015.5 5h13A2.5 2.5 0 0121 7.5v9A2.5 2.5 0 0118.5 19h-13A2.5 2.5 0 013 16.5v-9z"
-                    stroke="currentColor" stroke-width="2"/>
 
-                <circle cx="17" cy="12" r="1.5" fill="currentColor"/>
+                <path
+                    d="M3 7.5A2.5 2.5 0 015.5 5h13A2.5 2.5 0 0121 7.5v9A2.5 2.5 0 0118.5 19h-13A2.5 2.5 0 013 16.5v-9z"
+                    stroke="currentColor"
+                    stroke-width="2"/>
+
+                <circle
+                    cx="17"
+                    cy="12"
+                    r="1.5"
+                    fill="currentColor"/>
+
             </svg>
 
             <span>Connect Wallet</span>
 
         </button>
 
-        <!-- MENÚ HAMBURGUESA -->
-        <button class="menu-btn" id="menuBtn" aria-label="Open Menu">
+        <button class="menu-btn" id="menuBtn">
 
             <span></span>
             <span></span>
@@ -53,183 +62,344 @@
 
     </div>
 
-</nav>
+</header>
 
-<!-- OVERLAY -->
+<!--================ MENU HAMBURGUESA ================-->
 
 <div class="menu-overlay" id="menuOverlay"></div>
 
-<!-- MENÚ MÓVIL -->
+<aside class="side-menu" id="sideMenu">
 
-<aside class="mobile-menu" id="mobileMenu">
-
-    <div class="mobile-header">
+    <div class="side-header">
 
         <img src="logoalpha.png" alt="ALPHA">
 
-        <span>ALPHA</span>
+        <h2>ALPHA</h2>
 
     </div>
 
-    <nav class="mobile-links">
+    <nav class="side-links">
 
+        <a href="index.html">Home</a>
         <a href="about.html">About</a>
-
         <a href="tokenomics.html">Tokenomics</a>
-
         <a href="roadmap.html">Roadmap</a>
-
         <a href="docs.html">Docs</a>
 
     </nav>
 
 </aside>
 
+<!--================ HERO ================-->
 
-<div class="docs-container">
+<section class="hero">
 
-    <div class="sidebar">
+    <div class="hero-badge">
 
-        <h2>Tokenomics</h2>
-
-        <a href="#overview">Overview</a>
-        <a href="#supply">Total Supply</a>
-        <a href="#taxes">Tax Structure</a>
-        <a href="#distribution">Distribution</a>
-        <a href="#liquidity">Liquidity</a>
-        <a href="#utility">Utility</a>
+        TOKENOMICS
 
     </div>
 
-    <div class="content">
+    <h1>
 
-        <section id="overview" class="section">
+        Transparent.<br>
+        Sustainable.<br>
+        Built for Growth.
 
-            <h2>Overview</h2>
+    </h1>
 
-            <p>
-                ALPHA tokenomics are designed to be simple,
-                transparent and sustainable.
-                The objective is to support long-term ecosystem growth
-                while maintaining accessibility for the community.
-            </p>
+    <p>
+<p>
+    Transparent tokenomics designed for sustainable long-term growth.
+</p>
 
-        </section>
+    </p>
 
-        <section id="supply" class="section">
+</section>
 
-            <h2>Total Supply</h2>
+<!--================ TOKEN STATS ================-->
 
-            <div class="token-card">
+<section class="stats">
 
-                <h3>1,000,000,000 ALPHA</h3>
+    <div class="section-title">
 
-                <p>
-                    Fixed supply with no additional minting planned.
-                </p>
+        <span>TOKEN STATS</span>
 
-            </div>
+        <h2>Key Statistics</h2>
 
-        </section>
+        <p>
 
-        <section id="taxes" class="section">
+            Everything you need to know about the ALPHA token.
 
-            <h2>Tax Structure</h2>
-
-            <div class="token-card">
-
-                <ul>
-                    <li>Buy Tax: 0%</li>
-                    <li>Sell Tax: 0%</li>
-                    <li>Transfer Tax: 0%</li>
-                </ul>
-
-                <p>
-                    Users can trade freely without transaction taxes.
-                </p>
-
-            </div>
-
-        </section>
-
-        <section id="distribution" class="section">
-
-            <h2>Distribution</h2>
-
-            <div class="token-card">
-
-                <ul>
-                    <li>Community Allocation</li>
-                    <li>Liquidity Pool</li>
-                    <li>Ecosystem Growth</li>
-                    <li>Development</li>
-                    <li>Marketing</li>
-                </ul>
-
-            </div>
-
-        </section>
-
-        <section id="liquidity" class="section">
-
-            <h2>Liquidity</h2>
-
-            <div class="token-card">
-
-                <p>
-                    Liquidity information will be published
-                    before official launch.
-                </p>
-
-            </div>
-
-        </section>
-
-        <section id="utility" class="section">
-
-            <h2>Utility</h2>
-
-            <div class="token-card">
-
-                <ul>
-                    <li>Ecosystem Access</li>
-                    <li>Community Participation</li>
-                    <li>Future Governance</li>
-                    <li>Platform Utility</li>
-                </ul>
-
-            </div>
-
-        </section>
-<!-- FOOTER -->
-<footer>
-    <div class="social-links">
-
-        <a href="https://x.com/alpha_coin_?s=11" target="_blank">
-            <svg viewBox="0 0 24 24" class="icon">
-                <path d="M18.9 2H22l-6.8 7.8L23 22h-6.2l-4.9-6.3L6.3 22H2l7.3-8.4L1 2h6.3l4.4 5.7L18.9 2zm-1.1 18h1.7L7.2 3.9H5.4L17.8 20z"/>
-            </svg>
-        </a>
-
-        <a href="https://t.me/tuusuario" target="_blank">
-            <svg viewBox="0 0 24 24" class="icon">
-                <path d="M21.5 3.2L2.6 10.5c-1.3.5-1.3 1.2-.2 1.5l4.8 1.5 11.2-7.1c.5-.3.9-.1.5.2l-9.1 8.7-.3 4.2c.4 0 .6-.2.9-.5l2.2-2.1 4.7 3.5c.9.5 1.6.2 1.8-.8l3.3-15.6c.3-1.2-.5-1.7-1.9-1.2z"/>
-            </svg>
-        </a>
-
-        <a href="https://www.tiktok.com/@alpha_coin?_r=1&_t=ZN-97fUJeknmkQ" target="_blank">
-            <svg viewBox="0 0 24 24" class="icon">
-                <path d="M16 3c.5 2.8 2.2 4.5 5 4.8v3.2c-1.9.1-3.6-.5-5-1.6v7.2c0 3.9-3.1 7-7 7S2 20.5 2 16.6c0-3.9 3.1-7 7-7 .4 0 .8 0 1.2.1v3.4c-.4-.1-.8-.2-1.2-.2-2 0-3.6 1.6-3.6 3.6S7 20.1 9 20.1s3.6-1.6 3.6-3.6V3h3.4z"/>
-            </svg>
-        </a>
+        </p>
 
     </div>
-    
-    © 2026 ALPHA
-</footer>
-    </div>
+
+    <div class="stats-grid">
+
+        <div class="stat-card">
+
+            <span>Total Supply</span>
+
+            <h3>1B</h3>
+
+            <small>1,000,000,000 ALPHA</small>
+
+        </div>
+
+ <div class="stat-card">
+
+    <span>Taxes</span>
+
+    <h3>0%</h3>
+
+    <small>Buy • Sell • Transfer</small>
 
 </div>
 
+ <div class="stat-card">
+
+    <span>Mint</span>
+
+    <h3>Revoked</h3>
+
+    <small>Fixed Supply Forever</small>
+
+</div>
+
+</section>
+<!--================ TOKEN DISTRIBUTION ================-->
+
+<section class="distribution">
+
+    <div class="section-title">
+
+        <span>TOKEN DISTRIBUTION</span>
+
+        <h2>Balanced Allocation</h2>
+
+        <p>
+
+            ALPHA is designed with a transparent allocation focused on
+            long-term ecosystem growth.
+
+        </p>
+
+    </div>
+
+    <div class="distribution-container">
+
+        <div class="token-circle">
+
+            <div class="circle-center">
+
+                <h3>1B</h3>
+
+                <span>ALPHA</span>
+
+            </div>
+
+        </div>
+
+        <div class="distribution-list">
+
+            <div class="distribution-card">
+
+                <div class="color liquidity"></div>
+
+                <div>
+
+                    <h3>Liquidity</h3>
+
+                    <p>40%</p>
+
+                </div>
+
+            </div>
+
+            <div class="distribution-card">
+
+                <div class="color community"></div>
+
+                <div>
+
+                    <h3>Community</h3>
+
+                    <p>30%</p>
+
+                </div>
+
+            </div>
+
+            <div class="distribution-card">
+
+                <div class="color ecosystem"></div>
+
+                <div>
+
+                    <h3>Ecosystem</h3>
+
+                    <p>15%</p>
+
+                </div>
+
+            </div>
+
+            <div class="distribution-card">
+
+                <div class="color marketing"></div>
+
+                <div>
+
+                    <h3>Marketing</h3>
+
+                    <p>10%</p>
+
+                </div>
+
+            </div>
+
+            <div class="distribution-card">
+
+                <div class="color team"></div>
+
+                <div>
+
+                    <h3>Development</h3>
+
+                    <p>5%</p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+<!--================ SECURITY =================-->
+
+<section class="security">
+
+    <div class="section-title">
+
+        <span>SECURITY</span>
+
+        <h2>Built with Transparency</h2>
+
+        <p>
+
+            ALPHA is committed to creating a secure and trustworthy
+            ecosystem from day one.
+
+        </p>
+
+    </div>
+
+    <div class="security-grid">
+
+        <div class="security-card">
+
+            <div class="check">✓</div>
+
+            <h3>Fixed Supply</h3>
+
+            <p>
+
+                Total supply will never increase.
+
+            </p>
+
+        </div>
+
+        <div class="security-card">
+
+            <div class="check">✓</div>
+
+            <h3>Mint Revoked</h3>
+
+            <p>
+
+                No new tokens can ever be minted.
+
+            </p>
+
+        </div>
+
+        <div class="security-card">
+
+            <div class="check">✓</div>
+
+            <h3>Freeze Revoked</h3>
+
+            <p>
+
+                No wallet can be frozen by the team.
+
+            </p>
+
+        </div>
+
+        <div class="security-card">
+
+            <div class="check">✓</div>
+
+            <h3>Liquidity Locked</h3>
+
+            <p>
+
+                Liquidity will be secured after launch.
+
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!--================ FOOTER ================-->
+
+<footer class="footer">
+
+    <div class="footer-top">
+
+        <div class="footer-brand">
+
+            <img src="logoalpha.png" alt="ALPHA">
+
+            <h2>ALPHA</h2>
+
+            <p>
+                Fast. Secure. Community Driven.
+            </p>
+
+        </div>
+
+        <div class="footer-social">
+
+            <h3>Community</h3>
+
+            <a href="https://x.com/alpha_coin_?s=11" target="_blank">X / Twitter</a>
+
+            <a href="https://t.me/tuusuario" target="_blank">Telegram</a>
+
+            <a href="https://www.tiktok.com/@alpha_coin?_r=1&_t=ZN-97fUJeknmkQ" target="_blank">TikTok</a>
+
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+
+        © 2026 ALPHA • Built on Solana
+
+    </div>
+
+</footer>
+<script src="tokenomics.js"></script>
+
 </body>
+
 </html>
