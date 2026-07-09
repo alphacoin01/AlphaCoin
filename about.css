@@ -160,16 +160,10 @@ section{
     gap:12px;
 
 }
-
 .logo img{
-
-    width:72px;
-
-    transition:.35s;
-
-    filter:
-    drop-shadow(0 0 10px rgba(57,207,255,.40));
-
+    width:48px;
+    height:48px;
+    object-fit:contain;
 }
 
 .logo:hover img{
@@ -179,19 +173,7 @@ section{
 }
 
 .logo span{
-
-    font-size:28px;
-
-    font-weight:800;
-
-    letter-spacing:2px;
-
-    background:var(--gradient);
-
-    -webkit-background-clip:text;
-
-    -webkit-text-fill-color:transparent;
-
+    color: var(--primary);
 }
 
 /*==================================
