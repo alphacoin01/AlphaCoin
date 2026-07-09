@@ -1613,3 +1613,28 @@ main{
     box-shadow:0 20px 40px rgba(57,207,255,.15);
 
 }
+/*======================================
+  CONTRACT RESPONSIVE
+======================================*/
+
+@media (max-width:768px){
+
+    .contract-card{
+
+        padding:28px;
+
+    }
+
+    .contract-buttons{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .section-title h2{
+
+        font-size:32px;
+
+    }
+
+}
