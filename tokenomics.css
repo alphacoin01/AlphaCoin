@@ -692,6 +692,7 @@ body::before{
 
 }
 
+
 ::-webkit-scrollbar{
 
     width:10px;
@@ -952,27 +953,28 @@ body::before{
 }
 .side-menu{
 
-    position:fixed;
+    position: fixed;
 
-    top:0;
-    left:-340px;
+    top: 0;
+    left: 0;
 
-    width:320px;
-    height:100vh;
+    width: 320px;
+    height: 100vh;
 
-    padding:35px 30px;
+    padding: 35px 30px;
 
-    background:rgba(8,17,34,.96);
+    background: rgba(8,17,34,.96);
 
-    backdrop-filter:blur(24px);
+    backdrop-filter: blur(24px);
 
-    border-right:1px solid rgba(255,255,255,.08);
+    border-right: 1px solid rgba(255,255,255,.08);
 
-    box-shadow:20px 0 60px rgba(0,0,0,.45);
+    box-shadow: 20px 0 60px rgba(0,0,0,.45);
 
-    transition:left .35s ease;
+    transform: translateX(-100%);
+    transition: transform .35s ease;
 
-    z-index:10001;
+    z-index: 10001;
 
 }
 .side-header img{
@@ -990,7 +992,7 @@ body::before{
 
 .side-menu.active{
 
-    left:0;
+    transform: translateX(0);
 
 }
 .side-links{
