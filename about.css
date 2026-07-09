@@ -125,27 +125,27 @@ section{
 
     transform:translateX(-50%);
 
-    width:min(1450px,94%);
-    height:82px;
+    width:min(1400px,94%);
 
-    padding:0 28px;
+    height:82px;
 
     display:flex;
     justify-content:space-between;
     align-items:center;
 
-    background:rgba(10,18,35,.82);
+    padding:0 28px;
 
-    backdrop-filter:blur(18px);
+    background:rgba(8,17,34,.78);
 
-    border:1px solid rgba(255,255,255,.08);
+    backdrop-filter:blur(22px);
+
+    border:1px solid var(--border);
 
     border-radius:22px;
 
     box-shadow:var(--shadow);
 
-    z-index:9999;
-
+    z-index:1000;
 }
 
 /*==================================

@@ -825,35 +825,34 @@ footer p{
 
 .nav{
 
-    position:fixed;
+ position:fixed;
 
     top:20px;
-
     left:50%;
 
     transform:translateX(-50%);
 
-    width:min(1250px,92%);
+    width:min(1400px,94%);
 
     height:82px;
 
-    padding:0 28px;
-
     display:flex;
-
     justify-content:space-between;
-
     align-items:center;
 
-    background:rgba(8,17,34,.72);
+    padding:0 28px;
 
-    backdrop-filter:blur(18px);
+    background:rgba(8,17,34,.78);
 
-    border:1px solid rgba(255,255,255,.06);
+    backdrop-filter:blur(22px);
 
-    border-radius:24px;
+    border:1px solid var(--border);
 
-    z-index:9999;
+    border-radius:22px;
+
+    box-shadow:var(--shadow);
+
+    z-index:1000;
 
 }
 
@@ -1105,34 +1104,60 @@ footer p{
 }
 .wallet-btn{
 
-    height:52px;
+    height:50px;
 
-    padding:0 22px;
+    padding:0 24px;
 
     display:flex;
-
     align-items:center;
-
     gap:10px;
 
     border:none;
 
-    border-radius:18px;
-
-    background:linear-gradient(
-        135deg,
-        #39CFFF,
-        #4F8CFF
-    );
-
-    color:white;
-
-    font-size:15px;
-
-    font-weight:700;
+    border-radius:16px;
 
     cursor:pointer;
 
-    transition:.35s;
+    font-weight:700;
+
+    color:#071115;
+
+    background:linear-gradient(
+        135deg,
+        var(--primary),
+        #74F5FF
+    );
+
+    transition:.3s;
+
+}
+.stat-card,
+.distribution-card,
+.security-card{
+
+    opacity:0;
+
+    transform:translateY(40px);
+
+    transition:.7s ease;
+
+}
+
+.stat-card.show,
+.distribution-card.show,
+.security-card.show{
+
+    opacity:1;
+
+    transform:translateY(0);
+
+}
+.side-links a.active{
+
+    background:rgba(57,207,255,.15);
+
+    color:var(--primary);
+
+    border-left:none;
 
 }

@@ -1817,3 +1817,33 @@ footer p{
     0 18px 40px rgba(57,207,255,.18);
 
 }
+.stat-card,
+.distribution-card,
+.security-card{
+
+    opacity:0;
+
+    transform:translateY(40px);
+
+    transition:.7s ease;
+
+}
+
+.stat-card.show,
+.distribution-card.show,
+.security-card.show{
+
+    opacity:1;
+
+    transform:translateY(0);
+
+}
+.side-links a.active{
+
+    background:rgba(57,207,255,.15);
+
+    color:var(--primary);
+
+    border-left:3px solid var(--primary);
+
+}
