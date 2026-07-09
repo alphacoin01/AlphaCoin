@@ -311,3 +311,460 @@ if (menuBtn && sideMenu && menuOverlay) {
 
 }
 });
+    /*==========================
+      JUPITER QUOTE
+    ==========================*/
+
+    async function fetchQuote(inputMint, outputMint, amount) {
+
+        try {
+
+            const url =
+                `${JUPITER_API}/quote` +
+                `?inputMint=${inputMint}` +
+                `&outputMint=${outputMint}` +
+                `&amount=${amount}` +
+                `&slippageBps=50`;
+
+            const response = await fetch(url);
+
+            if (!response.ok) {
+                return null;
+            }
+
+            return await response.json();
+
+        } catch (error) {
+
+            console.error(error);
+            return null;
+
+        }
+
+    }
+
+    async function updateQuote() {
+
+        if (
+            !fromAmount ||
+            !toAmount ||
+            !fromToken ||
+            !toToken
+        ) return;
+
+        const amountUI = parseFloat(fromAmount.value);
+
+        if (!amountUI || amountUI <= 0) {
+
+            toAmount.value = "";
+            quote = null;
+
+            return;
+
+        }
+
+        const from = TOKENS[fromToken.value];
+        const to = TOKENS[toToken.value];
+
+        const amount = Math.floor(
+            amountUI * (10 ** from.decimals)
+        );
+
+        const result = await fetchQuote(
+            from.mint,
+            to.mint,
+            amount
+        );
+
+        if (!result || !result.outAmount) {
+
+            toAmount.value = "No route";
+            quote = null;
+
+            return;
+
+        }
+
+        quote = result;
+
+        const out =
+            Number(result.outAmount) /
+            (10 ** to.decimals);
+
+        toAmount.value = out.toFixed(6);
+
+    }
+
+    /*==========================
+      INPUT EVENTS
+    ==========================*/
+
+    fromAmount?.addEventListener("input", () => {
+
+        clearTimeout(debounce);
+
+        debounce = setTimeout(() => {
+
+            updateQuote();
+
+        }, 300);
+
+    });
+
+    fromToken?.addEventListener(
+        "change",
+        updateQuote
+    );
+
+    toToken?.addEventListener(
+        "change",
+        updateQuote
+    );
+
+    /*==========================
+      SWAP TOKENS
+    ==========================*/
+
+    swapDirection?.addEventListener("click", () => {
+
+        const current = fromToken.value;
+
+        fromToken.value = toToken.value;
+        toToken.value = current;
+
+        swapDirection.classList.add("rotating");
+
+        setTimeout(() => {
+
+            swapDirection.classList.remove("rotating");
+
+        }, 200);
+
+        updateQuote();
+
+    });
+
+    /*==========================
+      EXECUTE SWAP
+    ==========================*/
+
+    swapBtn?.addEventListener("click", async () => {
+
+        if (!wallet) {
+
+            alert("Connect wallet first");
+            return;
+
+        }
+
+        if (!quote) {
+
+            alert("No quote available");
+            return;
+
+        }
+
+        try {
+
+            const response = await fetch(
+
+                `${JUPITER_API}/swap`,
+
+                {
+                    method: "POST",
+
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+
+                    body: JSON.stringify({
+
+                        quoteResponse: quote,
+
+                        userPublicKey: wallet,
+
+                        wrapAndUnwrapSol: true
+
+                    })
+
+                }
+
+            );
+
+            const data = await response.json();
+
+            if (!data.swapTransaction) {
+
+                throw new Error("Transaction not received");
+
+            }
+
+            const transactionBuffer = Uint8Array.from(
+
+                atob(data.swapTransaction),
+
+                c => c.charCodeAt(0)
+
+            );
+
+            const transaction =
+                solanaWeb3.VersionedTransaction.deserialize(
+                    transactionBuffer
+                );
+
+            const signed =
+                await window.solana.signTransaction(
+                    transaction
+                );
+
+            const signature =
+                await connection.sendRawTransaction(
+                    signed.serialize()
+                );
+
+            alert(
+                "Swap successful\n\n" +
+                signature
+            );
+
+        } catch (error) {
+
+            console.error(error);
+
+            alert("Swap failed");
+
+        }
+
+    });
+        /*==========================
+      PRIVACY MODAL
+    ==========================*/
+
+    if (privacyModal) {
+
+        const accepted = localStorage.getItem("alpha_privacy");
+
+        if (accepted === "true") {
+
+            privacyModal.style.display = "none";
+
+        }
+
+        acceptPrivacy?.addEventListener("click", () => {
+
+            localStorage.setItem("alpha_privacy", "true");
+
+            privacyModal.style.display = "none";
+
+        });
+
+        rejectPrivacy?.addEventListener("click", () => {
+
+            window.location.href = "https://google.com";
+
+        });
+
+    }
+
+    /*==========================
+      COUNTDOWN
+    ==========================*/
+
+    const launchDate = new Date(
+        "July 10, 2026 00:00:00"
+    ).getTime();
+
+    function updateCountdown() {
+
+        if (
+            !daysEl ||
+            !hoursEl ||
+            !minutesEl ||
+            !secondsEl
+        ) return;
+
+        const now = Date.now();
+
+        const distance = launchDate - now;
+
+        if (distance <= 0) {
+
+            daysEl.textContent = "00";
+            hoursEl.textContent = "00";
+            minutesEl.textContent = "00";
+            secondsEl.textContent = "00";
+
+            return;
+
+        }
+
+        const days = Math.floor(
+            distance / (1000 * 60 * 60 * 24)
+        );
+
+        const hours = Math.floor(
+            (distance % (1000 * 60 * 60 * 24))
+            /
+            (1000 * 60 * 60)
+        );
+
+        const minutes = Math.floor(
+            (distance % (1000 * 60 * 60))
+            /
+            (1000 * 60)
+        );
+
+        const seconds = Math.floor(
+            (distance % (1000 * 60))
+            /
+            1000
+        );
+
+        daysEl.textContent =
+            String(days).padStart(2, "0");
+
+        hoursEl.textContent =
+            String(hours).padStart(2, "0");
+
+        minutesEl.textContent =
+            String(minutes).padStart(2, "0");
+
+        secondsEl.textContent =
+            String(seconds).padStart(2, "0");
+
+    }
+
+    updateCountdown();
+
+    setInterval(updateCountdown, 1000);
+
+    /*==========================
+      CONTRACT BUTTONS
+    ==========================*/
+
+    const contractAddress =
+        document.getElementById("contractAddress");
+
+    const copyBtn =
+        document.getElementById("copyContract");
+
+    const chartBtn =
+        document.getElementById("chartContract");
+
+    const solscanBtn =
+        document.getElementById("solscanContract");
+
+    copyBtn?.addEventListener("click", () => {
+
+        if (!contractAddress) return;
+
+        const address =
+            contractAddress.textContent.trim();
+
+        if (
+            address === "" ||
+            address === "Coming Soon"
+        ) {
+
+            alert("Contract not available yet");
+            return;
+
+        }
+
+        navigator.clipboard.writeText(address);
+
+        copyBtn.textContent = "Copied!";
+
+        setTimeout(() => {
+
+            copyBtn.textContent = "Copy Address";
+
+        }, 2000);
+
+    });
+
+    chartBtn?.addEventListener("click", () => {
+
+        if (!contractAddress) return;
+
+        const address =
+            contractAddress.textContent.trim();
+
+        if (address === "Coming Soon") {
+
+            alert("Chart not available yet");
+            return;
+
+        }
+
+        window.open(
+            `https://dexscreener.com/solana/${address}`,
+            "_blank"
+        );
+
+    });
+
+    solscanBtn?.addEventListener("click", () => {
+
+        if (!contractAddress) return;
+
+        const address =
+            contractAddress.textContent.trim();
+
+        if (address === "Coming Soon") {
+
+            alert("Contract not available yet");
+            return;
+
+        }
+
+        window.open(
+            `https://solscan.io/token/${address}`,
+            "_blank"
+        );
+
+    });
+
+    /*==========================
+      HAMBURGER MENU
+    ==========================*/
+
+    function closeMenu() {
+
+        menuBtn?.classList.remove("active");
+
+        sideMenu?.classList.remove("active");
+
+        menuOverlay?.classList.remove("active");
+
+    }
+
+    if (menuBtn && sideMenu && menuOverlay) {
+
+        menuBtn.addEventListener("click", () => {
+
+            menuBtn.classList.toggle("active");
+
+            sideMenu.classList.toggle("active");
+
+            menuOverlay.classList.toggle("active");
+
+        });
+
+        menuOverlay.addEventListener(
+            "click",
+            closeMenu
+        );
+
+        document
+            .querySelectorAll(".side-links a")
+            .forEach(link => {
+
+                link.addEventListener(
+                    "click",
+                    closeMenu
+                );
+
+            });
+
+    }
