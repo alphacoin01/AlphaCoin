@@ -1,50 +1,35 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ALPHA Docs</title>
+
+    <title>ALPHA | Docs</title>
+
+    <link rel="icon" href="logo.png">
     <link rel="stylesheet" href="docs.css">
+
 </head>
 
 <body>
 
-<!-- ================= NAVBAR ================= -->
+<!--================ NAVBAR ================-->
 
-<nav>
+<header class="nav">
 
-    <!-- LOGO -->
     <a href="index.html" class="logo">
-        <img src="logo.png" alt="ALPHA Logo">
+
+        <img src="logo.png" alt="ALPHA">
+
         <span>ALPHA</span>
+
     </a>
 
-    <!-- MENÚ PC -->
-    <ul class="nav-links">
-        <li><a href="about.html">About</a></li>
-        <li><a href="tokenomics.html">Tokenomics</a></li>
-        <li><a href="roadmap.html">Roadmap</a></li>
-        <li><a href="docs.html">Docs</a></li>
-    </ul>
-
-    <!-- BOTONES DERECHA -->
     <div class="nav-right">
 
-        <button class="wallet-btn" id="connectWallet">
-
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-                <path d="M3 7.5A2.5 2.5 0 015.5 5h13A2.5 2.5 0 0121 7.5v9A2.5 2.5 0 0118.5 19h-13A2.5 2.5 0 013 16.5v-9z"
-                    stroke="currentColor" stroke-width="2"/>
-
-                <circle cx="17" cy="12" r="1.5" fill="currentColor"/>
-            </svg>
-
-            <span>Connect Wallet</span>
-
-        </button>
-
-  
-                <button class="menu-btn" id="menuBtn">
+        <button class="menu-btn" id="menuBtn">
 
             <span></span>
             <span></span>
@@ -56,111 +41,138 @@
 
 </header>
 
+<!--================ MOBILE MENU ================-->
+
 <div class="menu-overlay" id="menuOverlay"></div>
 
 <aside class="side-menu" id="sideMenu">
 
     <div class="side-header">
 
-        <img src="logo.png">
+        <img src="logo.png" alt="ALPHA">
 
         <h2>ALPHA</h2>
 
     </div>
 
-   <nav class="side-links">
+    <nav class="side-links">
 
-    <a href="about.html">About</a>
+        <a href="index.html">Home</a>
 
-    <a href="tokenomics.html">Tokenomics</a>
+        <a href="about.html">About</a>
 
-    <a href="roadmap.html">Roadmap</a>
+        <a href="tokenomics.html">Tokenomics</a>
 
-    <a href="docs.html">Docs</a>
+        <a href="roadmap.html">Roadmap</a>
 
-</nav>
+        <a href="docs.html">Docs</a>
+
+    </nav>
+
 </aside>
 
-<main class="docs-container">
+<!--================ MAIN ================-->
 
-    <!-- SIDEBAR -->
-    <aside class="sidebar">
-        <h2>ALPHA Docs</h2>
+<main>
 
-        <a href="#intro">Introduction</a>
-        <a href="#about">About ALPHA</a>
-        <a href="#tokenomics">Tokenomics</a>
-        <a href="#roadmap">Roadmap</a>
-        <a href="#security">Security</a>
-    </aside>
+    <!--================ HERO ================-->
 
-    <!-- CONTENT -->
-    <section class="content">
+    <section class="docs-hero">
 
-        <div id="intro" class="section">
+        <h1>Documentation</h1>
+
+        <p>
+            Everything you need to understand the ALPHA ecosystem.
+        </p>
+
+    </section>
+
+    <!--================ DOCS GRID ================-->
+
+    <section class="docs-grid">
+
+        <article class="doc-card">
+
             <h2>Introduction</h2>
-            <p>
-                Welcome to ALPHA documentation. This project is a decentralized ecosystem
-                built on Solana focused on performance and real utility.
-            </p>
-        </div>
 
-        <div id="about" class="section">
-            <h2>About ALPHA</h2>
             <p>
-                ALPHA is a blockchain-native ecosystem designed for scalability and efficiency.
+                ALPHA is a Solana ecosystem focused on speed, transparency and long-term utility.
             </p>
-        </div>
 
-        <div id="tokenomics" class="section">
-            <h2>Tokenomics</h2>
+        </article>
+
+        <article class="doc-card">
+
+            <h2>Token</h2>
+
             <p>
-                Community-driven distribution model designed for long-term sustainability.
+                Built on Solana with low fees, fast transactions and community ownership.
             </p>
-        </div>
 
-        <div id="roadmap" class="section">
+        </article>
+
+        <article class="doc-card">
+
             <h2>Roadmap</h2>
-            <p>
-                2026 plan includes wallet integration, ecosystem expansion and partnerships.
-            </p>
-        </div>
 
-        <div id="security" class="section">
+            <p>
+                Development follows clear phases from launch to ecosystem expansion.
+            </p>
+
+        </article>
+
+        <article class="doc-card">
+
             <h2>Security</h2>
+
             <p>
-                Smart contracts are designed with safety and transparency in mind.
+                Designed with transparency, reliability and secure smart contracts.
             </p>
-        </div>
-<!-- FOOTER -->
-<footer>
-    <div class="social-links">
 
-        <a href="https://x.com/alpha_coin_?s=11" target="_blank">
-            <svg viewBox="0 0 24 24" class="icon">
-                <path d="M18.9 2H22l-6.8 7.8L23 22h-6.2l-4.9-6.3L6.3 22H2l7.3-8.4L1 2h6.3l4.4 5.7L18.9 2zm-1.1 18h1.7L7.2 3.9H5.4L17.8 20z"/>
-            </svg>
-        </a>
+        </article>
 
-        <a href="https://t.me/tuusuario" target="_blank">
-            <svg viewBox="0 0 24 24" class="icon">
-                <path d="M21.5 3.2L2.6 10.5c-1.3.5-1.3 1.2-.2 1.5l4.8 1.5 11.2-7.1c.5-.3.9-.1.5.2l-9.1 8.7-.3 4.2c.4 0 .6-.2.9-.5l2.2-2.1 4.7 3.5c.9.5 1.6.2 1.8-.8l3.3-15.6c.3-1.2-.5-1.7-1.9-1.2z"/>
-            </svg>
-        </a>
-
-        <a href="https://www.tiktok.com/@alpha_coin?_r=1&_t=ZN-97fUJeknmkQ" target="_blank">
-            <svg viewBox="0 0 24 24" class="icon">
-                <path d="M16 3c.5 2.8 2.2 4.5 5 4.8v3.2c-1.9.1-3.6-.5-5-1.6v7.2c0 3.9-3.1 7-7 7S2 20.5 2 16.6c0-3.9 3.1-7 7-7 .4 0 .8 0 1.2.1v3.4c-.4-.1-.8-.2-1.2-.2-2 0-3.6 1.6-3.6 3.6S7 20.1 9 20.1s3.6-1.6 3.6-3.6V3h3.4z"/>
-            </svg>
-        </a>
-
-    </div>
-    
-    © 2026 ALPHA
-</footer>
     </section>
 
 </main>
 
+<!--================ FOOTER ================-->
+
+<footer>
+
+    <div class="social-links">
+
+        <a href="https://x.com/alpha_coin_?s=11" target="_blank">
+
+            <svg viewBox="0 0 24 24" class="icon">
+                <path d="M18.9 2H22l-6.8 7.8L23 22h-6.2l-4.9-6.3L6.3 22H2l7.3-8.4L1 2h6.3l4.4 5.7L18.9 2zm-1.1 18h1.7L7.2 3.9H5.4L17.8 20z"/>
+            </svg>
+
+        </a>
+
+        <a href="https://t.me/tuusuario" target="_blank">
+
+            <svg viewBox="0 0 24 24" class="icon">
+                <path d="M21.5 3.2L2.6 10.5c-1.3.5-1.3 1.2-.2 1.5l4.8 1.5 11.2-7.1c.5-.3.9-.1.5.2l-9.1 8.7-.3 4.2c.4 0 .6-.2.9-.5l2.2-2.1 4.7 3.5c.9.5 1.6.2 1.8-.8l3.3-15.6c.3-1.2-.5-1.7-1.9-1.2z"/>
+            </svg>
+
+        </a>
+
+        <a href="https://www.tiktok.com/@alpha_coin?_r=1&_t=ZN-97fUJeknmkQ" target="_blank">
+
+            <svg viewBox="0 0 24 24" class="icon">
+                <path d="M16 3c.5 2.8 2.2 4.5 5 4.8v3.2c-1.9.1-3.6-.5-5-1.6v7.2c0 3.9-3.1 7-7 7S2 20.5 2 16.6c0-3.9 3.1-7 7-7 .4 0 .8 0 1.2.1v3.4c-.4-.1-.8-.2-1.2-.2-2 0-3.6 1.6-3.6 3.6S7 20.1 9 20.1s3.6-1.6 3.6-3.6V3h3.4z"/>
+            </svg>
+
+        </a>
+
+    </div>
+
+    <p>© 2026 ALPHA. All rights reserved.</p>
+
+</footer>
+
+<script src="docs.js"></script>
+
 </body>
+
 </html>
