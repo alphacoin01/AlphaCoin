@@ -799,7 +799,7 @@ footer{
     position:fixed;
 
     top:0;
-    left:-320px;
+    left:0px;
 
     width:300px;
     height:100vh;
@@ -867,7 +867,7 @@ footer{
     display:flex;
 
     flex-direction:column;
-
+   
     gap:10px;
 
 }
@@ -875,7 +875,7 @@ footer{
 .side-links a{
 
     padding:16px;
-
+    text-decoration: none;
     border-radius:16px;
 
     font-weight:600;
