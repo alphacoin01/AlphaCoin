@@ -251,6 +251,62 @@ solscanContract?.addEventListener("click", () => {
     );
 
 });
+
+/*==========================
+ PRIVACY POLICY
+==========================*/
+
+
+const privacyModal = document.querySelector(".privacy-modal");
+
+const acceptBtn = document.querySelector(".btn.accept");
+const rejectBtn = document.querySelector(".btn.reject");
+
+
+function closePrivacy(){
+
+    privacyModal.style.display="none";
+
+    document.body.style.overflow="auto";
+
+}
+
+
+
+if(privacyModal){
+
+    document.body.style.overflow="hidden";
+
+}
+
+
+
+if(acceptBtn){
+
+    acceptBtn.addEventListener("click",()=>{
+
+        localStorage.setItem(
+            "alphaPrivacyAccepted",
+            "true"
+        );
+
+        closePrivacy();
+
+    });
+
+}
+
+
+
+if(rejectBtn){
+
+    rejectBtn.addEventListener("click",()=>{
+
+        window.location.href="https://google.com";
+
+    });
+
+}
         /*==========================
       EXTRA
     ==========================*/
