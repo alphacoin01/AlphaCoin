@@ -1975,18 +1975,21 @@ footer{
 
 /* BOTONES */
 
+/* =====================================
+   BOTONES PRIVACY PREMIUM
+===================================== */
+
 .privacy-actions{
 
     flex-shrink:0;
 
     display:flex;
 
-    gap:15px;
+    gap:35px; /* más separación entre botones */
 
-    padding-top:20px;
+    padding-top:30px;
 
 }
-
 
 
 .btn{
@@ -1995,23 +1998,32 @@ footer{
 
     overflow:hidden;
 
-    height:58px;
+    flex:1;
 
-    border-radius:18px;
+    min-height:64px;
 
-    border:1px solid rgba(255,255,255,.12);
+    padding:0 45px;
 
-    font-size:16px;
+    border-radius:24px;
+
+    border:1px solid rgba(255,255,255,.15);
+
+    font-size:17px;
 
     font-weight:800;
 
-    letter-spacing:.5px;
+    letter-spacing:.6px;
 
     cursor:pointer;
 
     transition:.35s ease;
 
+    backdrop-filter:blur(15px);
+
 }
+
+
+/* brillo */
 
 .btn::before{
 
@@ -2030,15 +2042,16 @@ footer{
     background:linear-gradient(
         90deg,
         transparent,
-        rgba(255,255,255,.45),
+        rgba(255,255,255,.55),
         transparent
     );
 
     transform:skewX(-25deg);
 
-    transition:.7s;
+    transition:.8s;
 
 }
+
 
 .btn:hover::before{
 
@@ -2047,12 +2060,18 @@ footer{
 }
 
 
+/* =========================
+   ACEPTAR
+========================= */
+
+
 .btn.accept{
 
-    color:#071115;
+    color:#061019;
 
+    background:
 
-    background:linear-gradient(
+    linear-gradient(
         135deg,
         #39CFFF,
         #79E8FF
@@ -2061,53 +2080,92 @@ footer{
 
     box-shadow:
 
-    0 15px 40px rgba(57,207,255,.35);
+    0 15px 45px rgba(57,207,255,.35);
 
 }
 
 
+
+/* Hover azul ALPHA */
 
 .btn.accept:hover{
 
-    transform:translateY(-5px);
+    transform:translateY(-6px) scale(1.03);
+
+    color:white;
+
+    background:
+
+    linear-gradient(
+        135deg,
+        #008cff,
+        #39CFFF
+    );
+
 
     box-shadow:
 
-    0 25px 60px rgba(57,207,255,.55);
+    0 25px 70px rgba(57,207,255,.65);
 
 }
+
+
+
+/* =========================
+   RECHAZAR
+========================= */
 
 
 .btn.reject{
 
     color:white;
 
+    background:
 
-    background:linear-gradient(
+    linear-gradient(
         135deg,
-        #ef4444,
-        #ff7b7b
+        #182235,
+        #26354d
     );
 
 
+    border:1px solid rgba(255,255,255,.18);
+
+
     box-shadow:
 
-    0 15px 40px rgba(239,68,68,.35);
+    0 15px 45px rgba(0,0,0,.45);
 
 }
 
 
+
+/* Hover azul ALPHA */
 
 .btn.reject:hover{
 
-    transform:translateY(-5px);
+    transform:translateY(-6px) scale(1.03);
+
+
+    background:
+
+    linear-gradient(
+        135deg,
+        #008cff,
+        #39CFFF
+    );
+
+
+    border-color:#39CFFF;
 
 
     box-shadow:
 
-    0 25px 60px rgba(239,68,68,.55);
+    0 25px 70px rgba(57,207,255,.65);
 
 }
+
+
 
 .btn:active{
 
@@ -2116,57 +2174,19 @@ footer{
 }
 
 
+
 /* =====================================
    MOVIL
 ===================================== */
 
-
 @media(max-width:700px){
-
-
-    .privacy-modal{
-
-        padding:12px;
-
-        align-items:center;
-
-    }
-
-
-
-    .privacy-box{
-
-        width:100%;
-
-        max-height:92dvh;
-
-        padding:22px;
-
-        border-radius:24px;
-
-    }
-
-
-
-    .privacy-box h2{
-
-        font-size:24px;
-
-    }
-
-
-
-    .privacy-content{
-
-        font-size:15px;
-
-    }
-
 
 
     .privacy-actions{
 
         flex-direction:column;
+
+        gap:18px;
 
     }
 
@@ -2174,6 +2194,8 @@ footer{
     .btn{
 
         width:100%;
+
+        min-height:62px;
 
     }
 
