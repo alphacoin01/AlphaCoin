@@ -223,35 +223,24 @@ body::before{
 
     border-radius:50%;
 
-    background:
+    background:conic-gradient(
 
-    conic-gradient(
-
-        #39CFFF 0 40%,
-
-        #6EE7FF 40% 70%,
-
-        #FF4FD8 70% 85%,
-
-        #8A5CFF 85% 95%,
-
-        #FFFFFF 95% 100%
+        #fff239 0% 85%,
+        #ff6e6e 85% 95%,
+        #8A5CFF 95% 100%
 
     );
 
     display:flex;
-
     justify-content:center;
     align-items:center;
 
     margin:auto;
 
     box-shadow:
-
     0 0 80px rgba(57,207,255,.2);
 
 }
-
 .circle-center{
 
     width:210px;
@@ -332,34 +321,17 @@ body::before{
 }
 
 .liquidity{
-
-    background:#39CFFF;
-
-}
-
-.community{
-
-    background:#6FE8FF;
-
+    background: #fff239 ;
 }
 
 .ecosystem{
-
-    background:#FF4FD8;
-
+    background:#ff6e6e;
 }
 
 .marketing{
-
-    background:#9D5CFF;
-
+    background:#8A5CFF;
 }
 
-.team{
-
-    background:#FFC857;
-
-}
 
 .distribution-card h3{
 
