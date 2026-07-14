@@ -245,20 +245,21 @@ section{
     width:300px;
     height:100vh;
 
+    padding:35px;
+
+    display:flex;
+
+    flex-direction:column;
+
     background:#081122;
 
     border-right:1px solid var(--border);
 
     backdrop-filter:blur(30px);
 
-    padding:35px;
-
-    transition:.35s;
+    transition:left .35s ease;
 
     z-index:1200;
-
-    display:flex;
-    flex-direction:column;
 
 }
 
@@ -268,9 +269,14 @@ section{
 
 }
 
+/*======================================
+=           SIDE HEADER                =
+======================================*/
+
 .side-header{
 
     display:flex;
+
     align-items:center;
 
     gap:14px;
@@ -287,9 +293,15 @@ section{
 
 .side-header h2{
 
-    font-size:22px;
+    font-size:24px;
+
+    color:white;
 
 }
+
+/*======================================
+=            SIDE LINKS                =
+======================================*/
 
 .side-links{
 
@@ -305,13 +317,13 @@ section{
 
     padding:16px;
 
-    border-radius:14px;
+    border-radius:16px;
 
-    transition:.3s;
+    font-weight:600;
 
     color:white;
 
-    font-weight:600;
+    transition:var(--transition);
 
 }
 
@@ -322,13 +334,26 @@ section{
     color:var(--primary);
 
 }
+
+.side-links a.active{
+
+    background:rgba(57,207,255,.12);
+
+    color:var(--primary);
+
+}
+
+/*======================================
+=            OVERLAY                   =
+======================================*/
+
 .menu-overlay{
 
     position:fixed;
 
     inset:0;
 
-    background:rgba(0,0,0,.6);
+    background:rgba(0,0,0,.55);
 
     backdrop-filter:blur(4px);
 
@@ -336,7 +361,7 @@ section{
 
     visibility:hidden;
 
-    transition:.3s;
+    transition:var(--transition);
 
     z-index:1100;
 
@@ -349,6 +374,7 @@ section{
     visibility:visible;
 
 }
+
 .menu-btn.active span:nth-child(1){
 
     transform:
@@ -380,88 +406,8 @@ section{
 
 
 }
-/*==================================
-          SIDE HEADER
-==================================*/
 
-.side-header{
 
-    display:flex;
-
-    align-items:center;
-
-    gap:14px;
-
-    margin-bottom:50px;
-
-}
-
-.side-header img{
-
-    width:60px;
-
-    filter:drop-shadow(0 0 15px rgba(57,207,255,.35));
-
-}
-
-.side-header h2{
-
-    font-size:28px;
-
-    font-weight:800;
-
-    letter-spacing:2px;
-
-    background:var(--gradient);
-
-    -webkit-background-clip:text;
-
-    -webkit-text-fill-color:transparent;
-
-}
-/*==================================
-            LINKS
-==================================*/
-
-.side-links{
-
-    display:flex;
-
-    flex-direction:column;
-
-    gap:14px;
-
-}
-
-.side-links a{
-
-    padding:18px 20px;
-
-    border-radius:16px;
-
-    color:var(--text-soft);
-
-    font-size:17px;
-
-    font-weight:600;
-
-    transition:.30s;
-
-    border:1px solid transparent;
-
-}
-
-.side-links a:hover{
-
-    background:rgba(57,207,255,.08);
-
-    color:white;
-
-    border-color:rgba(57,207,255,.20);
-
-    transform:translateX(8px);
-
-}
 /*==================================
           RESPONSIVE
 ==================================*/
