@@ -228,17 +228,17 @@ main{
 
 .logo img{
 
-    width:48px;
+    width:60px;
 
 }
 
 .logo span{
 
-    font-size:30px;
+    font-size:25px;
 
-    font-weight:800;
+    font-weight:700;
 
-   color:#fff; /* Blanco */
+    color:#fff; /* Blanco */
 
     letter-spacing:1px;
 

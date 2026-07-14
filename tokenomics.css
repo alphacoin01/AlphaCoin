@@ -852,27 +852,20 @@ body::before{
 }
 
 .logo img{
-    width:48px;
-
-    height:48px;
-
-    object-fit:contain;
-
-    display:block;
-
+    
+    width:60px;
 
 }
 
 .logo span{
 
+   font-size:25px;
+
+    font-weight:700;
+
     color:#fff; /* Blanco */
 
-    font-size:30px;
-
-    font-weight:800;
-
     letter-spacing:1px;
-    transition:.3s;
 
 
 }
