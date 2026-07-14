@@ -865,7 +865,7 @@ body::before{
 
 .logo span{
 
-    color:var(--primary);
+    color:#fff; /* Blanco */
 
     font-size:30px;
 
