@@ -1,544 +1,177 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-
-    const RPC = "https://api.mainnet-beta.solana.com";
-    const JUPITER_API = "https://lite-api.jup.ag/swap/v1";
-
-    const TOKENS = {
-        SOL: {
-            mint: "So11111111111111111111111111111111111111112",
-            decimals: 9
-        },
-        USDC: {
-            mint: "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
-            decimals: 6
-        }
-    };
-
-    let wallet = null;
-    let quote = null;
-    let debounce;
-
-    const connection = new solanaWeb3.Connection(RPC);
-
-    console.log("APP LOADED");
+    /*==========================
+      PHANTOM WALLET
+    ==========================*/
 
     const connectBtn = document.getElementById("connectWallet");
     const walletInfo = document.getElementById("walletInfo");
 
-    const fromToken = document.getElementById("fromToken");
-    const toToken = document.getElementById("toToken");
-
-    const fromAmount = document.getElementById("fromAmount");
-    const toAmount = document.getElementById("toAmount");
-
-    const swapBtn = document.getElementById("swapBtn");
-    const swapDirection = document.getElementById("swapDirection");
-
-    const themeToggle = document.getElementById("themeToggle");
+    let wallet = null;
 
     function getProvider() {
-        if (window.solana?.isPhantom) return window.solana;
+        if ("solana" in window) {
+            const provider = window.solana;
+
+            if (provider.isPhantom) {
+                return provider;
+            }
+        }
+
         window.open("https://phantom.app/", "_blank");
         return null;
     }
 
     async function connectWallet() {
+
         try {
+
             const provider = getProvider();
+
             if (!provider) return;
 
-            const res = await provider.connect();
-            wallet = res.publicKey.toString();
+            const response = await provider.connect();
+
+            wallet = response.publicKey.toString();
 
             const span = connectBtn.querySelector("span");
 
             if (span) {
                 span.textContent =
-                    wallet.slice(0, 4) + "..." + wallet.slice(-4);
+                    wallet.substring(0, 4) +
+                    "..." +
+                    wallet.substring(wallet.length - 4);
             }
 
             walletInfo.innerHTML = `
-                <div style="text-align:center">
-                    <h3 style="color:#31D7D5;">Wallet Connected</h3>
-                    <p style="font-size:13px;opacity:.8;">
-                        ${wallet}
-                    </p>
-                </div>
+                <strong style="color:#3b82f6;">
+                    Wallet Connected
+                </strong>
+                <br>
+                <small>${wallet}</small>
             `;
 
         } catch (err) {
+
             console.error(err);
+
+            alert("Wallet connection cancelled.");
+
         }
+
     }
 
     connectBtn?.addEventListener("click", connectWallet);
 
-    async function fetchQuote(inputMint, outputMint, amount) {
-        try {
-            const url =
-                `${JUPITER_API}/quote` +
-                `?inputMint=${inputMint}` +
-                `&outputMint=${outputMint}` +
-                `&amount=${amount}` +
-                `&slippageBps=50`;
 
-            const res = await fetch(url);
 
-            if (!res.ok) return null;
+    /*==========================
+      COUNTDOWN
+    ==========================*/
 
-            return await res.json();
+    const launchDate = new Date("July 20, 2026 00:00:00").getTime();
 
-        } catch (err) {
-            console.error(err);
-            return null;
-        }
-    }
+    const countdown = document.querySelector(".countdown");
 
-    async function updateQuote() {
-
-        const amountUI = parseFloat(fromAmount.value);
-
-        if (!amountUI || amountUI <= 0) {
-            toAmount.value = "";
-            quote = null;
-            return;
-        }
-
-        const from = TOKENS[fromToken.value];
-        const to = TOKENS[toToken.value];
-
-        const amount = Math.floor(amountUI * (10 ** from.decimals));
-
-        const q = await fetchQuote(from.mint, to.mint, amount);
-
-        if (!q || !q.outAmount) {
-            toAmount.value = "No route";
-            quote = null;
-            return;
-        }
-
-        quote = q;
-
-        const out = Number(q.outAmount) / (10 ** to.decimals);
-        toAmount.value = out.toFixed(6);
-    }
-
-    fromAmount?.addEventListener("input", () => {
-        clearTimeout(debounce);
-        debounce = setTimeout(updateQuote, 300);
-    });
-
-    fromToken?.addEventListener("change", updateQuote);
-    toToken?.addEventListener("change", updateQuote);
-
-    swapDirection?.addEventListener("click", () => {
-
-        const temp = fromToken.value;
-        fromToken.value = toToken.value;
-        toToken.value = temp;
-
-        swapDirection.classList.add("rotating");
-
-        setTimeout(() => {
-            swapDirection.classList.remove("rotating");
-        }, 200);
-
-        updateQuote();
-    });
-
-    swapBtn?.addEventListener("click", async () => {
-
-        if (!wallet) {
-            alert("Connect wallet first");
-            return;
-        }
-
-        if (!quote || !quote.outAmount) {
-            alert("No quote yet");
-            return;
-        }
-
-        try {
-
-            const res = await fetch(`${JUPITER_API}/swap`, {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                    quoteResponse: quote,
-                    userPublicKey: wallet,
-                    wrapAndUnwrapSol: true
-                })
-            });
-
-            const data = await res.json();
-
-            if (!data.swapTransaction) {
-                throw new Error("No transaction returned");
-            }
-
-            const txBuf = Uint8Array.from(
-                atob(data.swapTransaction),
-                c => c.charCodeAt(0)
-            );
-
-            const tx = solanaWeb3.VersionedTransaction.deserialize(txBuf);
-
-            const signed = await window.solana.signTransaction(tx);
-
-            const sig = await connection.sendRawTransaction(signed.serialize());
-
-            alert("Swap success:\n" + sig);
-
-        } catch (err) {
-            console.error(err);
-            alert("Swap failed");
-        }
-    });
-
-    function setTheme(mode) {
-
-        if (mode === "light") {
-            document.body.classList.add("light");
-            if (themeToggle) themeToggle.textContent = "☀️";
-        } else {
-            document.body.classList.remove("light");
-            if (themeToggle) themeToggle.textContent = "🌙";
-        }
-
-        localStorage.setItem("theme", mode);
-    }
-
-    const savedTheme = localStorage.getItem("theme") || "dark";
-    setTheme(savedTheme);
-
-    themeToggle?.addEventListener("click", () => {
-
-        const isLight = document.body.classList.contains("light");
-        setTheme(isLight ? "dark" : "light");
-
-    });
-
-    const modal = document.getElementById("privacyModal");
-    const accept = document.getElementById("acceptPrivacy");
-    const reject = document.getElementById("rejectPrivacy");
-
-    if (modal) {
-
-        const accepted = localStorage.getItem("alpha_privacy");
-
-        if (accepted === "true") {
-            modal.style.display = "none";
-        }
-
-        accept?.addEventListener("click", () => {
-            localStorage.setItem("alpha_privacy", "true");
-            modal.style.display = "none";
-        });
-
-        reject?.addEventListener("click", () => {
-            window.location.href = "https://www.google.com";
-        });
-    }
-
-    const launchDate = new Date("July 10, 2026 00:00:00").getTime();
-
-    const daysEl = document.getElementById("days");
-    const hoursEl = document.getElementById("hours");
-    const minutesEl = document.getElementById("minutes");
-    const secondsEl = document.getElementById("seconds");
+    const days = document.getElementById("days");
+    const hours = document.getElementById("hours");
+    const minutes = document.getElementById("minutes");
+    const seconds = document.getElementById("seconds");
 
     function updateCountdown() {
 
-        if (!daysEl || !hoursEl || !minutesEl || !secondsEl) return;
+        const now = Date.now();
 
-        const now = new Date().getTime();
         const distance = launchDate - now;
 
         if (distance <= 0) {
-            daysEl.textContent = "00";
-            hoursEl.textContent = "00";
-            minutesEl.textContent = "00";
-            secondsEl.textContent = "00";
+
+            countdown.style.display = "none";
+
+            clearInterval(timer);
+
             return;
+
         }
 
-        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        days.textContent = String(
+            Math.floor(distance / (1000 * 60 * 60 * 24))
+        ).padStart(2, "0");
 
-        daysEl.textContent = String(days).padStart(2, "0");
-        hoursEl.textContent = String(hours).padStart(2, "0");
-        minutesEl.textContent = String(minutes).padStart(2, "0");
-        secondsEl.textContent = String(seconds).padStart(2, "0");
+        hours.textContent = String(
+            Math.floor(
+                (distance % (1000 * 60 * 60 * 24))
+                /
+                (1000 * 60 * 60)
+            )
+        ).padStart(2, "0");
+
+        minutes.textContent = String(
+            Math.floor(
+                (distance % (1000 * 60 * 60))
+                /
+                (1000 * 60)
+            )
+        ).padStart(2, "0");
+
+        seconds.textContent = String(
+            Math.floor(
+                (distance % (1000 * 60))
+                /
+                1000
+            )
+        ).padStart(2, "0");
+
     }
 
     updateCountdown();
-    setInterval(updateCountdown, 1000);
 
-/* ===========================
-   HAMBURGER MENU
-=========================== */
-
-const menuBtn = document.getElementById("menuBtn");
-const sideMenu = document.getElementById("sideMenu");
-const menuOverlay = document.getElementById("menuOverlay");
-
-function closeMenu() {
-    menuBtn.classList.remove("active");
-    sideMenu.classList.remove("active");
-    menuOverlay.classList.remove("active");
-}
-
-if (menuBtn && sideMenu && menuOverlay) {
-
-    menuBtn.addEventListener("click", () => {
-
-        menuBtn.classList.toggle("active");
-        sideMenu.classList.toggle("active");
-        menuOverlay.classList.toggle("active");
-
-    });
-
-    menuOverlay.addEventListener("click", closeMenu);
-
-    document.querySelectorAll(".side-links a").forEach(link => {
-
-        link.addEventListener("click", closeMenu);
-
-    });
-
-}
-});
-    /*==========================
-      JUPITER QUOTE
-    ==========================*/
-
-    async function fetchQuote(inputMint, outputMint, amount) {
-
-        try {
-
-            const url =
-                `${JUPITER_API}/quote` +
-                `?inputMint=${inputMint}` +
-                `&outputMint=${outputMint}` +
-                `&amount=${amount}` +
-                `&slippageBps=50`;
-
-            const response = await fetch(url);
-
-            if (!response.ok) {
-                return null;
-            }
-
-            return await response.json();
-
-        } catch (error) {
-
-            console.error(error);
-            return null;
-
-        }
-
-    }
-
-    async function updateQuote() {
-
-        if (
-            !fromAmount ||
-            !toAmount ||
-            !fromToken ||
-            !toToken
-        ) return;
-
-        const amountUI = parseFloat(fromAmount.value);
-
-        if (!amountUI || amountUI <= 0) {
-
-            toAmount.value = "";
-            quote = null;
-
-            return;
-
-        }
-
-        const from = TOKENS[fromToken.value];
-        const to = TOKENS[toToken.value];
-
-        const amount = Math.floor(
-            amountUI * (10 ** from.decimals)
-        );
-
-        const result = await fetchQuote(
-            from.mint,
-            to.mint,
-            amount
-        );
-
-        if (!result || !result.outAmount) {
-
-            toAmount.value = "No route";
-            quote = null;
-
-            return;
-
-        }
-
-        quote = result;
-
-        const out =
-            Number(result.outAmount) /
-            (10 ** to.decimals);
-
-        toAmount.value = out.toFixed(6);
-
-    }
-
-    /*==========================
-      INPUT EVENTS
-    ==========================*/
-
-    fromAmount?.addEventListener("input", () => {
-
-        clearTimeout(debounce);
-
-        debounce = setTimeout(() => {
-
-            updateQuote();
-
-        }, 300);
-
-    });
-
-    fromToken?.addEventListener(
-        "change",
-        updateQuote
-    );
-
-    toToken?.addEventListener(
-        "change",
-        updateQuote
-    );
-
-    /*==========================
-      SWAP TOKENS
-    ==========================*/
-
-    swapDirection?.addEventListener("click", () => {
-
-        const current = fromToken.value;
-
-        fromToken.value = toToken.value;
-        toToken.value = current;
-
-        swapDirection.classList.add("rotating");
-
-        setTimeout(() => {
-
-            swapDirection.classList.remove("rotating");
-
-        }, 200);
-
-        updateQuote();
-
-    });
-
-    /*==========================
-      EXECUTE SWAP
-    ==========================*/
-
-    swapBtn?.addEventListener("click", async () => {
-
-        if (!wallet) {
-
-            alert("Connect wallet first");
-            return;
-
-        }
-
-        if (!quote) {
-
-            alert("No quote available");
-            return;
-
-        }
-
-        try {
-
-            const response = await fetch(
-
-                `${JUPITER_API}/swap`,
-
-                {
-                    method: "POST",
-
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-
-                    body: JSON.stringify({
-
-                        quoteResponse: quote,
-
-                        userPublicKey: wallet,
-
-                        wrapAndUnwrapSol: true
-
-                    })
-
-                }
-
-            );
-
-            const data = await response.json();
-
-            if (!data.swapTransaction) {
-
-                throw new Error("Transaction not received");
-
-            }
-
-            const transactionBuffer = Uint8Array.from(
-
-                atob(data.swapTransaction),
-
-                c => c.charCodeAt(0)
-
-            );
-
-            const transaction =
-                solanaWeb3.VersionedTransaction.deserialize(
-                    transactionBuffer
-                );
-
-            const signed =
-                await window.solana.signTransaction(
-                    transaction
-                );
-
-            const signature =
-                await connection.sendRawTransaction(
-                    signed.serialize()
-                );
-
-            alert(
-                "Swap successful\n\n" +
-                signature
-            );
-
-        } catch (error) {
-
-            console.error(error);
-
-            alert("Swap failed");
-
-        }
-
-    });
+    const timer = setInterval(updateCountdown, 1000);
         /*==========================
+      HAMBURGER MENU
+    ==========================*/
+
+    const menuBtn = document.getElementById("menuBtn");
+    const sideMenu = document.getElementById("sideMenu");
+    const menuOverlay = document.getElementById("menuOverlay");
+
+    function closeMenu() {
+
+        menuBtn?.classList.remove("active");
+        sideMenu?.classList.remove("active");
+        menuOverlay?.classList.remove("active");
+
+    }
+
+    if (menuBtn && sideMenu && menuOverlay) {
+
+        menuBtn.addEventListener("click", () => {
+
+            menuBtn.classList.toggle("active");
+            sideMenu.classList.toggle("active");
+            menuOverlay.classList.toggle("active");
+
+        });
+
+        menuOverlay.addEventListener("click", closeMenu);
+
+        document.querySelectorAll(".side-links a").forEach(link => {
+
+            link.addEventListener("click", closeMenu);
+
+        });
+
+    }
+
+
+
+    /*==========================
       PRIVACY MODAL
     ==========================*/
+
+    const privacyModal = document.getElementById("privacyModal");
+    const acceptPrivacy = document.getElementById("acceptPrivacy");
+    const rejectPrivacy = document.getElementById("rejectPrivacy");
 
     if (privacyModal) {
 
@@ -565,134 +198,59 @@ if (menuBtn && sideMenu && menuOverlay) {
         });
 
     }
-
-    /*==========================
-      COUNTDOWN
-    ==========================*/
-
-    const launchDate = new Date(
-        "July 10, 2026 00:00:00"
-    ).getTime();
-
-    function updateCountdown() {
-
-        if (
-            !daysEl ||
-            !hoursEl ||
-            !minutesEl ||
-            !secondsEl
-        ) return;
-
-        const now = Date.now();
-
-        const distance = launchDate - now;
-
-        if (distance <= 0) {
-
-            daysEl.textContent = "00";
-            hoursEl.textContent = "00";
-            minutesEl.textContent = "00";
-            secondsEl.textContent = "00";
-
-            return;
-
-        }
-
-        const days = Math.floor(
-            distance / (1000 * 60 * 60 * 24)
-        );
-
-        const hours = Math.floor(
-            (distance % (1000 * 60 * 60 * 24))
-            /
-            (1000 * 60 * 60)
-        );
-
-        const minutes = Math.floor(
-            (distance % (1000 * 60 * 60))
-            /
-            (1000 * 60)
-        );
-
-        const seconds = Math.floor(
-            (distance % (1000 * 60))
-            /
-            1000
-        );
-
-        daysEl.textContent =
-            String(days).padStart(2, "0");
-
-        hoursEl.textContent =
-            String(hours).padStart(2, "0");
-
-        minutesEl.textContent =
-            String(minutes).padStart(2, "0");
-
-        secondsEl.textContent =
-            String(seconds).padStart(2, "0");
-
-    }
-
-    updateCountdown();
-
-    setInterval(updateCountdown, 1000);
-
-    /*==========================
+        /*==========================
       CONTRACT BUTTONS
     ==========================*/
 
-    const contractAddress =
-        document.getElementById("contractAddress");
+    const contractAddress = document.getElementById("contractAddress");
 
-    const copyBtn =
-        document.getElementById("copyContract");
+    const copyBtn = document.getElementById("copyContract");
+    const chartBtn = document.getElementById("chartContract");
+    const solscanBtn = document.getElementById("solscanContract");
 
-    const chartBtn =
-        document.getElementById("chartContract");
+    copyBtn?.addEventListener("click", async () => {
 
-    const solscanBtn =
-        document.getElementById("solscanContract");
-
-    copyBtn?.addEventListener("click", () => {
-
-        if (!contractAddress) return;
-
-        const address =
-            contractAddress.textContent.trim();
+        const address = contractAddress.textContent.trim();
 
         if (
             address === "" ||
             address === "Coming Soon"
         ) {
 
-            alert("Contract not available yet");
+            alert("Contract not available yet.");
             return;
 
         }
 
-        navigator.clipboard.writeText(address);
+        try {
 
-        copyBtn.textContent = "Copied!";
+            await navigator.clipboard.writeText(address);
 
-        setTimeout(() => {
+            copyBtn.textContent = "Copied!";
 
-            copyBtn.textContent = "Copy Address";
+            setTimeout(() => {
 
-        }, 2000);
+                copyBtn.textContent = "Copy Address";
+
+            }, 2000);
+
+        } catch {
+
+            alert("Unable to copy address.");
+
+        }
 
     });
 
+
+
     chartBtn?.addEventListener("click", () => {
 
-        if (!contractAddress) return;
-
-        const address =
-            contractAddress.textContent.trim();
+        const address = contractAddress.textContent.trim();
 
         if (address === "Coming Soon") {
 
-            alert("Chart not available yet");
+            alert("Chart not available yet.");
             return;
 
         }
@@ -704,16 +262,15 @@ if (menuBtn && sideMenu && menuOverlay) {
 
     });
 
+
+
     solscanBtn?.addEventListener("click", () => {
 
-        if (!contractAddress) return;
-
-        const address =
-            contractAddress.textContent.trim();
+        const address = contractAddress.textContent.trim();
 
         if (address === "Coming Soon") {
 
-            alert("Contract not available yet");
+            alert("Contract not available yet.");
             return;
 
         }
@@ -725,46 +282,44 @@ if (menuBtn && sideMenu && menuOverlay) {
 
     });
 
+
+
     /*==========================
-      HAMBURGER MENU
+      BUY / SELL BUTTONS
     ==========================*/
 
-    function closeMenu() {
+    const buyBtn = document.querySelector(".trade-btn.buy");
+    const sellBtn = document.querySelector(".trade-btn.sell");
 
-        menuBtn?.classList.remove("active");
+    buyBtn?.addEventListener("click", () => {
 
-        sideMenu?.classList.remove("active");
+        alert("The Buy option will be enabled after launch.");
 
-        menuOverlay?.classList.remove("active");
+    });
 
-    }
+    sellBtn?.addEventListener("click", () => {
 
-    if (menuBtn && sideMenu && menuOverlay) {
+        alert("The Sell option will be enabled after launch.");
 
-        menuBtn.addEventListener("click", () => {
+    });
 
-            menuBtn.classList.toggle("active");
 
-            sideMenu.classList.toggle("active");
 
-            menuOverlay.classList.toggle("active");
+    /*==========================
+      SWAP BUTTON
+    ==========================*/
 
-        });
+    const swapBtn = document.querySelector(".swap-btn");
 
-        menuOverlay.addEventListener(
-            "click",
-            closeMenu
-        );
+    swapBtn?.addEventListener("click", () => {
 
-        document
-            .querySelectorAll(".side-links a")
-            .forEach(link => {
+        alert("Swap will be available after token launch.");
 
-                link.addEventListener(
-                    "click",
-                    closeMenu
-                );
+    });
+        /*==========================
+      EXTRA
+    ==========================*/
 
-            });
+    console.log("✅ ALPHA APP LOADED");
 
-    }
+});
