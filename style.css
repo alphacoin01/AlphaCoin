@@ -191,22 +191,24 @@ main{
 
     transform:translateX(-50%);
 
-    width:min(1400px,94%);
-    height:82px;
+    width:min(1200px,92%);
 
-    padding:0 28px;
+    height:80px;
+
+    padding:0 30px;
 
     display:flex;
+
     justify-content:space-between;
     align-items:center;
 
     background:rgba(8,17,34,.80);
 
-    backdrop-filter:blur(22px);
-
     border:1px solid var(--border);
 
-    border-radius:22px;
+    border-radius:24px;
+
+    backdrop-filter:blur(24px);
 
     box-shadow:var(--shadow);
 
@@ -214,22 +216,19 @@ main{
 
 }
 
-/*======================================
-=               LOGO                   =
-======================================*/
-
 .logo{
 
     display:flex;
+
     align-items:center;
-    gap:12px;
+
+    gap:14px;
 
 }
 
 .logo img{
 
     width:48px;
-    height:48px;
 
 }
 
@@ -242,14 +241,6 @@ main{
     color:var(--primary);
 
     letter-spacing:1px;
-
-    transition:var(--transition);
-
-}
-
-.logo:hover span{
-
-    color:var(--primary-light);
 
 }
 
