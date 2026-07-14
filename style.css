@@ -1829,3 +1829,148 @@ footer{
 
 }
 
+/*======================================
+=         PRIVACY MODAL
+======================================*/
+
+.privacy-modal{
+
+    position:fixed;
+
+    inset:0;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:20px;
+
+    background:rgba(0,0,0,.65);
+
+    backdrop-filter:blur(8px);
+
+    z-index:99999;
+
+}
+
+.privacy-box{
+
+    width:100%;
+
+    max-width:520px;
+
+    padding:40px;
+
+    border-radius:26px;
+
+    background:rgba(8,17,34,.96);
+
+    border:1px solid rgba(57,207,255,.18);
+
+    box-shadow:0 30px 80px rgba(0,0,0,.55);
+
+    text-align:center;
+
+}
+
+.privacy-box h2{
+
+    font-size:34px;
+
+    color:#fff;
+
+    margin-bottom:18px;
+
+}
+
+.privacy-box p{
+
+    color:var(--text-soft);
+
+    line-height:1.8;
+
+    font-size:16px;
+
+    margin-bottom:35px;
+
+}
+
+.privacy-actions{
+
+    display:flex;
+
+    gap:15px;
+
+}
+
+.privacy-actions .btn{
+
+    flex:1;
+
+    height:52px;
+
+    border:none;
+
+    border-radius:16px;
+
+    cursor:pointer;
+
+    font-size:15px;
+
+    font-weight:700;
+
+    transition:.3s;
+
+}
+
+.secondary{
+
+    background:transparent;
+
+    color:var(--primary);
+
+    border:1px solid var(--primary);
+
+}
+
+.secondary:hover{
+
+    background:rgba(57,207,255,.12);
+
+}
+
+.reject{
+
+    background:#202B45;
+
+    color:white;
+
+}
+
+.reject:hover{
+
+    background:#303D5E;
+
+}
+
+.accept{
+
+    background:linear-gradient(
+        135deg,
+        var(--primary),
+        #6EE7FF
+    );
+
+    color:#071115;
+
+}
+
+.accept:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:0 15px 35px rgba(57,207,255,.35);
+
+}
