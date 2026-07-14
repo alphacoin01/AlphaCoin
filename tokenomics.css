@@ -852,7 +852,7 @@ body::before{
 }
 
 .logo img{
-    
+
     width:60px;
 
 }
@@ -861,7 +861,7 @@ body::before{
 
    font-size:25px;
 
-    font-weight:700;
+    font-weight:600;
 
     color:#fff; /* Blanco */
 
