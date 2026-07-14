@@ -719,3 +719,231 @@ footer p{
     letter-spacing:.5px;
 
 }
+
+/*==================================================
+              MOBILE RESPONSIVE ABOUT
+==================================================*/
+
+@media(max-width:768px){
+
+
+    /* NAVBAR */
+
+    .nav{
+
+        top:12px;
+
+        width:94%;
+
+        height:70px;
+
+        padding:0 18px;
+
+        border-radius:20px;
+
+    }
+
+
+    .logo img{
+
+        width:45px;
+
+    }
+
+
+    .logo span{
+
+        font-size:20px;
+
+    }
+
+
+    .menu-btn{
+
+        width:48px;
+
+        height:48px;
+
+        border-radius:15px;
+
+    }
+
+
+
+    /* SIDE MENU */
+
+    .side-menu{
+
+        width:280px;
+
+        padding:25px;
+
+    }
+
+
+
+    /* MAIN */
+
+    main{
+
+        width:92%;
+
+        padding-top:120px;
+
+        padding-bottom:70px;
+
+    }
+
+
+
+    /* HERO */
+
+    .docs-hero{
+
+        margin-bottom:45px;
+
+    }
+
+
+    .docs-hero h1{
+
+        font-size:42px;
+
+        line-height:1.1;
+
+        margin-bottom:15px;
+
+    }
+
+
+    .docs-hero p{
+
+        font-size:16px;
+
+        line-height:1.6;
+
+        padding:0 10px;
+
+    }
+
+
+
+    /* GRID */
+
+    .docs-grid{
+
+        grid-template-columns:1fr;
+
+        gap:20px;
+
+    }
+
+
+
+    /* CARDS */
+
+    .doc-card{
+
+        padding:25px;
+
+        border-radius:22px;
+
+    }
+
+
+    .doc-card h2{
+
+        font-size:24px;
+
+        margin-bottom:12px;
+
+    }
+
+
+    .doc-card p{
+
+        font-size:15px;
+
+        line-height:1.7;
+
+    }
+
+
+
+    /* FOOTER */
+
+    footer{
+
+        margin-top:70px;
+
+        padding:50px 15px 30px;
+
+    }
+
+
+    .social-links{
+
+        gap:15px;
+
+    }
+
+
+    .social-links a{
+
+        width:50px;
+
+        height:50px;
+
+        border-radius:16px;
+
+    }
+
+
+    .icon{
+
+        width:22px;
+
+        height:22px;
+
+    }
+
+}
+
+
+
+/*==================================================
+              SMALL MOBILE
+==================================================*/
+
+@media(max-width:420px){
+
+
+    .docs-hero h1{
+
+        font-size:36px;
+
+    }
+
+
+    .docs-hero p{
+
+        font-size:15px;
+
+    }
+
+
+    .doc-card{
+
+        padding:22px;
+
+    }
+
+
+    .doc-card h2{
+
+        font-size:22px;
+
+    }
+
+
+}
