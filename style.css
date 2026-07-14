@@ -1991,38 +1991,129 @@ footer{
 
 .btn{
 
-    flex:1;
+    position:relative;
 
-    height:55px;
+    overflow:hidden;
 
-    border-radius:16px;
+    height:58px;
 
-    font-weight:700;
+    border-radius:18px;
+
+    border:1px solid rgba(255,255,255,.12);
 
     font-size:16px;
+
+    font-weight:800;
+
+    letter-spacing:.5px;
+
+    cursor:pointer;
+
+    transition:.35s ease;
+
+}
+
+.btn::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+
+    left:-120%;
+
+    width:70%;
+
+    height:100%;
+
+    background:linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,.45),
+        transparent
+    );
+
+    transform:skewX(-25deg);
+
+    transition:.7s;
+
+}
+
+.btn:hover::before{
+
+    left:150%;
+
+}
+
+
+.btn.accept{
+
+    color:#071115;
+
+
+    background:linear-gradient(
+        135deg,
+        #39CFFF,
+        #79E8FF
+    );
+
+
+    box-shadow:
+
+    0 15px 40px rgba(57,207,255,.35);
 
 }
 
 
 
-.btn.accept{
+.btn.accept:hover{
 
-    background:#39CFFF;
+    transform:translateY(-5px);
 
-    color:#071115;
+    box-shadow:
+
+    0 25px 60px rgba(57,207,255,.55);
 
 }
 
 
 .btn.reject{
 
-    background:#ef4444;
-
     color:white;
+
+
+    background:linear-gradient(
+        135deg,
+        #ef4444,
+        #ff7b7b
+    );
+
+
+    box-shadow:
+
+    0 15px 40px rgba(239,68,68,.35);
 
 }
 
 
+
+.btn.reject:hover{
+
+    transform:translateY(-5px);
+
+
+    box-shadow:
+
+    0 25px 60px rgba(239,68,68,.55);
+
+}
+
+.btn:active{
+
+    transform:scale(.96);
+
+}
 
 
 /* =====================================

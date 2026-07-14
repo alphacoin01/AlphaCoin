@@ -636,7 +636,8 @@ section{
     font-size:54px;
 
     font-weight:800;
-     background:linear-gradient(
+    
+    background:linear-gradient(
         135deg,
         #ffffff,
         var(--primary),
