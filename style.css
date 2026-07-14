@@ -891,22 +891,7 @@ main{
 
     color:white;
 
-    background:
-
-        linear-gradient(
-            135deg,
-            var(--primary),
-            var(--secondary)
-        );
-
-    transition:var(--transition);
-
-}
-
-.swap-arrow:hover{
-
-    transform:rotate(180deg) scale(1.08);
-
+    background: var(--primary);
 }
 
 .swap-btn{
@@ -925,16 +910,7 @@ main{
 
     color:#071115;
 
-    background:
-
-        linear-gradient(
-            135deg,
-            var(--primary),
-            var(--primary-light)
-        );
-
-    transition:var(--transition);
-
+  background: var(--primary);
 }
 
 .swap-btn:hover{
