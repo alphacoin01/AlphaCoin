@@ -686,30 +686,31 @@ footer{
 
 .nav{
 
- position:fixed;
+    position:fixed;
 
     top:20px;
     left:50%;
 
     transform:translateX(-50%);
 
-    width:min(1400px,94%);
+    width:min(1200px,92%);
 
-    height:82px;
+    height:80px;
+
+    padding:0 30px;
 
     display:flex;
+
     justify-content:space-between;
     align-items:center;
 
-    padding:0 28px;
-
-    background:rgba(8,17,34,.78);
-
-    backdrop-filter:blur(22px);
+    background:rgba(8,17,34,.80);
 
     border:1px solid var(--border);
 
-    border-radius:22px;
+    border-radius:24px;
+
+    backdrop-filter:blur(24px);
 
     box-shadow:var(--shadow);
 
@@ -725,33 +726,23 @@ footer{
 
     gap:14px;
 
-    text-decoration:none;
-
 }
 
 .logo img{
+
     width:48px;
-
-    height:48px;
-
-    object-fit:contain;
-
-    display:block;
-
 
 }
 
 .logo span{
 
-    color:var(--primary);
-
     font-size:30px;
 
     font-weight:800;
 
-    letter-spacing:1px;
-    transition:.3s;
+    color:var(--primary);
 
+    letter-spacing:1px;
 
 }
 
