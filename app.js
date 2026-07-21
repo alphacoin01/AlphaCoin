@@ -10,16 +10,21 @@ document.addEventListener("DOMContentLoaded", () => {
     let wallet = null;
 
     function getProvider() {
+
         if ("solana" in window) {
+
             const provider = window.solana;
 
             if (provider.isPhantom) {
                 return provider;
             }
+
         }
 
         window.open("https://phantom.app/", "_blank");
+
         return null;
+
     }
 
     async function connectWallet() {
@@ -34,22 +39,28 @@ document.addEventListener("DOMContentLoaded", () => {
 
             wallet = response.publicKey.toString();
 
-            const span = connectBtn.querySelector("span");
+            const span = connectBtn?.querySelector("span");
 
             if (span) {
+
                 span.textContent =
                     wallet.substring(0, 4) +
                     "..." +
                     wallet.substring(wallet.length - 4);
+
             }
 
-            walletInfo.innerHTML = `
-                <strong style="color:#3b82f6;">
-                    Wallet Connected
-                </strong>
-                <br>
-                <small>${wallet}</small>
-            `;
+            if (walletInfo) {
+
+                walletInfo.innerHTML = `
+                    <strong style="color:#3b82f6;">
+                        Wallet Connected
+                    </strong>
+                    <br>
+                    <small>${wallet}</small>
+                `;
+
+            }
 
         } catch (err) {
 
@@ -61,298 +72,484 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 
-    connectBtn?.addEventListener("click", connectWallet);
+    connectBtn?.addEventListener(
+        "click",
+        connectWallet
+    );
 
 
-/*==========================
-      HAMBURGER MENU
-==========================*/
+    /*==========================
+          HAMBURGER MENU
+    ==========================*/
 
-const menuBtn = document.getElementById("menuBtn");
-const sideMenu = document.getElementById("sideMenu");
-const menuOverlay = document.getElementById("menuOverlay");
+    const menuBtn =
+        document.getElementById("menuBtn");
 
-function closeMenu() {
+    const sideMenu =
+        document.getElementById("sideMenu");
 
-    menuBtn?.classList.remove("active");
-    sideMenu?.classList.remove("active");
-    menuOverlay?.classList.remove("active");
+    const menuOverlay =
+        document.getElementById("menuOverlay");
 
-}
 
-if (menuBtn && sideMenu && menuOverlay) {
+    function closeMenu() {
 
-    menuBtn.addEventListener("click", () => {
+        menuBtn?.classList.remove("active");
 
-        const isOpen =
-            sideMenu.classList.contains("active");
+        sideMenu?.classList.remove("active");
 
-        if (isOpen) {
+        menuOverlay?.classList.remove("active");
 
-            closeMenu();
+    }
+
+
+    if (
+        menuBtn &&
+        sideMenu &&
+        menuOverlay
+    ) {
+
+        menuBtn.addEventListener(
+            "click",
+            () => {
+
+                const isOpen =
+                    sideMenu.classList.contains("active");
+
+
+                if (isOpen) {
+
+                    closeMenu();
+
+                } else {
+
+                    menuBtn.classList.add("active");
+
+                    sideMenu.classList.add("active");
+
+                    menuOverlay.classList.add("active");
+
+                }
+
+            }
+        );
+
+
+        menuOverlay.addEventListener(
+            "click",
+            closeMenu
+        );
+
+
+        document
+            .querySelectorAll(".side-links a")
+            .forEach(link => {
+
+                link.addEventListener(
+                    "click",
+                    closeMenu
+                );
+
+            });
+
+    }
+
+
+    /*==========================
+          COUNTDOWN
+    ==========================*/
+
+    const launchDate =
+        new Date(
+            "July 25, 2026 00:00:00"
+        ).getTime();
+
+
+    const countdown =
+        document.querySelector(".countdown");
+
+
+    const days =
+        document.getElementById("days");
+
+    const hours =
+        document.getElementById("hours");
+
+    const minutes =
+        document.getElementById("minutes");
+
+    const seconds =
+        document.getElementById("seconds");
+
+
+    let timer = null;
+
+
+    function updateCountdown() {
+
+        const now = Date.now();
+
+        const distance =
+            launchDate - now;
+
+
+        if (distance <= 0) {
+
+            if (countdown) {
+
+                countdown.style.display =
+                    "none";
+
+            }
+
+            if (timer) {
+
+                clearInterval(timer);
+
+            }
+
+            return;
+
+        }
+
+
+        if (days) {
+
+            days.textContent =
+                String(
+                    Math.floor(
+                        distance /
+                        (1000 * 60 * 60 * 24)
+                    )
+                ).padStart(2, "0");
+
+        }
+
+
+        if (hours) {
+
+            hours.textContent =
+                String(
+                    Math.floor(
+                        (
+                            distance %
+                            (1000 * 60 * 60 * 24)
+                        )
+                        /
+                        (1000 * 60 * 60)
+                    )
+                ).padStart(2, "0");
+
+        }
+
+
+        if (minutes) {
+
+            minutes.textContent =
+                String(
+                    Math.floor(
+                        (
+                            distance %
+                            (1000 * 60 * 60)
+                        )
+                        /
+                        (1000 * 60)
+                    )
+                ).padStart(2, "0");
+
+        }
+
+
+        if (seconds) {
+
+            seconds.textContent =
+                String(
+                    Math.floor(
+                        (
+                            distance %
+                            (1000 * 60)
+                        )
+                        /
+                        1000
+                    )
+                ).padStart(2, "0");
+
+        }
+
+    }
+
+
+    updateCountdown();
+
+
+    timer =
+        setInterval(
+            updateCountdown,
+            1000
+        );
+
+
+    /*==========================
+        BUY / SELL BUTTONS
+    ==========================*/
+
+    const buyBtn =
+        document.querySelector(
+            ".trade-btn.buy"
+        );
+
+    const sellBtn =
+        document.querySelector(
+            ".trade-btn.sell"
+        );
+
+
+    buyBtn?.addEventListener(
+        "click",
+        () => {
+
+            alert(
+                "The Buy option will be enabled after launch."
+            );
+
+        }
+    );
+
+
+    sellBtn?.addEventListener(
+        "click",
+        () => {
+
+            alert(
+                "The Sell option will be enabled after launch."
+            );
+
+        }
+    );
+
+
+    /*==========================
+            SWAP BUTTON
+    ==========================*/
+
+    const swapBtn =
+        document.querySelector(
+            ".swap-btn"
+        );
+
+
+    swapBtn?.addEventListener(
+        "click",
+        () => {
+
+            alert(
+                "Swap will be available after token launch."
+            );
+
+        }
+    );
+
+
+    /*==========================
+        CONTRACT BUTTONS
+    ==========================*/
+
+    const contractAddress =
+        "TU_CONTRACT_ADDRESS_AQUI";
+
+
+    const copyContract =
+        document.getElementById(
+            "copyContract"
+        );
+
+    const chartContract =
+        document.getElementById(
+            "chartContract"
+        );
+
+    const solscanContract =
+        document.getElementById(
+            "solscanContract"
+        );
+
+
+    copyContract?.addEventListener(
+        "click",
+        () => {
+
+            if (
+                contractAddress ===
+                "TU_CONTRACT_ADDRESS_AQUI"
+            ) {
+
+                alert(
+                    "Contract not available yet"
+                );
+
+                return;
+
+            }
+
+
+            navigator.clipboard
+                .writeText(contractAddress);
+
+
+            alert(
+                "Contract copied"
+            );
+
+        }
+    );
+
+
+    chartContract?.addEventListener(
+        "click",
+        () => {
+
+            if (
+                contractAddress ===
+                "TU_CONTRACT_ADDRESS_AQUI"
+            ) {
+
+                alert(
+                    "Chart available after launch"
+                );
+
+                return;
+
+            }
+
+
+            window.open(
+                `https://dexscreener.com/solana/${contractAddress}`,
+                "_blank"
+            );
+
+        }
+    );
+
+
+    solscanContract?.addEventListener(
+        "click",
+        () => {
+
+            if (
+                contractAddress ===
+                "TU_CONTRACT_ADDRESS_AQUI"
+            ) {
+
+                alert(
+                    "Contract available after launch"
+                );
+
+                return;
+
+            }
+
+
+            window.open(
+                `https://solscan.io/token/${contractAddress}`,
+                "_blank"
+            );
+
+        }
+    );
+
+
+    /*==========================
+          PRIVACY POLICY
+    ==========================*/
+
+    const privacyModal =
+        document.getElementById(
+            "privacyModal"
+        );
+
+
+    const acceptBtn =
+        document.getElementById(
+            "acceptPrivacy"
+        );
+
+
+    const rejectBtn =
+        document.getElementById(
+            "rejectPrivacy"
+        );
+
+
+    if (privacyModal) {
+
+        const privacyAccepted =
+            localStorage.getItem(
+                "alphaPrivacyAccepted"
+            );
+
+
+        if (
+            privacyAccepted === "true"
+        ) {
+
+            privacyModal.style.display =
+                "none";
+
+            document.body.style.overflow =
+                "auto";
 
         } else {
 
-            menuBtn.classList.add("active");
-            sideMenu.classList.add("active");
-            menuOverlay.classList.add("active");
+            privacyModal.style.display =
+                "flex";
+
+            document.body.style.overflow =
+                "hidden";
 
         }
 
-    });
 
-    menuOverlay.addEventListener(
-        "click",
-        closeMenu
-    );
+        acceptBtn?.addEventListener(
+            "click",
+            () => {
 
-    document
-        .querySelectorAll(".side-links a")
-        .forEach(link => {
+                localStorage.setItem(
+                    "alphaPrivacyAccepted",
+                    "true"
+                );
 
-            link.addEventListener(
-                "click",
-                closeMenu
-            );
 
-        });
+                privacyModal.style.display =
+                    "none";
 
-}
-    /*==========================
-      COUNTDOWN
-==========================*/
 
-const launchDate = new Date(
-    "July 25, 2026 00:00:00"
-).getTime();
+                document.body.style.overflow =
+                    "auto";
 
-const countdown = document.querySelector(".countdown");
-
-const days = document.getElementById("days");
-const hours = document.getElementById("hours");
-const minutes = document.getElementById("minutes");
-const seconds = document.getElementById("seconds");
-
-let timer = null;
-
-function updateCountdown() {
-
-    const now = Date.now();
-
-    const distance = launchDate - now;
-
-    if (distance <= 0) {
-
-        if (countdown) {
-            countdown.style.display = "none";
-        }
-
-        clearInterval(timer);
-
-        return;
-
-    }
-
-    if (days) {
-
-        days.textContent = String(
-            Math.floor(
-                distance / (1000 * 60 * 60 * 24)
-            )
-        ).padStart(2, "0");
-
-    }
-
-    if (hours) {
-
-        hours.textContent = String(
-            Math.floor(
-                (distance % (1000 * 60 * 60 * 24))
-                /
-                (1000 * 60 * 60)
-            )
-        ).padStart(2, "0");
-
-    }
-
-    if (minutes) {
-
-        minutes.textContent = String(
-            Math.floor(
-                (distance % (1000 * 60 * 60))
-                /
-                (1000 * 60)
-            )
-        ).padStart(2, "0");
-
-    }
-
-    if (seconds) {
-
-        seconds.textContent = String(
-            Math.floor(
-                (distance % (1000 * 60))
-                /
-                1000
-            )
-        ).padStart(2, "0");
-
-    }
-
-}
-
-timer = setInterval(updateCountdown, 1000);
-
-updateCountdown();
-
-
-    /*==========================
-      BUY / SELL BUTTONS
-    ==========================*/
-
-    const buyBtn = document.querySelector(".trade-btn.buy");
-    const sellBtn = document.querySelector(".trade-btn.sell");
-
-    buyBtn?.addEventListener("click", () => {
-
-        alert("The Buy option will be enabled after launch.");
-
-    });
-
-    sellBtn?.addEventListener("click", () => {
-
-        alert("The Sell option will be enabled after launch.");
-
-    });
-
-
-
-    /*==========================
-      SWAP BUTTON
-    ==========================*/
-
-    const swapBtn = document.querySelector(".swap-btn");
-
-    swapBtn?.addEventListener("click", () => {
-
-        alert("Swap will be available after token launch.");
-
-    });
-
-    /*==========================
-  CONTRACT BUTTONS
-==========================*/
-
-const contractAddress = "TU_CONTRACT_ADDRESS_AQUI";
-
-
-const copyContract = document.getElementById("copyContract");
-const chartContract = document.getElementById("chartContract");
-const solscanContract = document.getElementById("solscanContract");
-
-
-copyContract?.addEventListener("click", () => {
-
-    if(contractAddress === "TU_CONTRACT_ADDRESS_AQUI"){
-        alert("Contract not available yet");
-        return;
-    }
-
-    navigator.clipboard.writeText(contractAddress);
-
-    alert("Contract copied");
-
-});
-
-
-chartContract?.addEventListener("click", () => {
-
-    if(contractAddress === "TU_CONTRACT_ADDRESS_AQUI"){
-        alert("Chart available after launch");
-        return;
-    }
-
-    window.open(
-        `https://dexscreener.com/solana/${contractAddress}`,
-        "_blank"
-    );
-
-});
-
-
-solscanContract?.addEventListener("click", () => {
-
-    if(contractAddress === "TU_CONTRACT_ADDRESS_AQUI"){
-        alert("Contract available after launch");
-        return;
-    }
-
-    window.open(
-        `https://solscan.io/token/${contractAddress}`,
-        "_blank"
-    );
-
-});
-
-/*==========================
-      PRIVACY POLICY
-==========================*/
-
-const privacyModal = document.getElementById("privacyModal");
-
-const acceptBtn = document.getElementById("acceptPrivacy");
-const rejectBtn = document.getElementById("rejectPrivacy");
-
-
-// Si no existe el modal, no hacemos nada
-if (privacyModal) {
-
-    // Comprobar si el usuario ya aceptó
-    const privacyAccepted =
-        localStorage.getItem("alphaPrivacyAccepted");
-
-
-    // Si ya aceptó, ocultar el modal
-    if (privacyAccepted === "true") {
-
-        privacyModal.style.display = "none";
-
-        document.body.style.overflow = "auto";
-
-    } else {
-
-        // Si no ha aceptado, mostrar el modal
-        privacyModal.style.display = "flex";
-
-        document.body.style.overflow = "hidden";
-
-    }
-
-
-    // BOTÓN ACCEPT
-    acceptBtn?.addEventListener("click", () => {
-
-        // Guardar aceptación
-        localStorage.setItem(
-            "alphaPrivacyAccepted",
-            "true"
+            }
         );
 
-        // Ocultar modal
-        privacyModal.style.display = "none";
 
-        // Permitir volver a hacer scroll
-        document.body.style.overflow = "auto";
+        rejectBtn?.addEventListener(
+            "click",
+            () => {
 
-    });
+                window.location.href =
+                    "https://www.google.com";
+
+            }
+        );
+
+    }
 
 
-    // BOTÓN REJECT
-    rejectBtn?.addEventListener("click", () => {
+    /*==========================
+              EXTRA
+    ==========================*/
 
-        window.location.href = "https://www.google.com";
+    console.log(
+        "✅ ALPHA APP LOADED"
+    );
 
-    });
 
-}
 });
