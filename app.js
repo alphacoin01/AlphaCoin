@@ -355,3 +355,4 @@ if (privacyModal) {
     });
 
 }
+});
