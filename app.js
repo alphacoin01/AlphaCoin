@@ -64,39 +64,106 @@ document.addEventListener("DOMContentLoaded", () => {
     connectBtn?.addEventListener("click", connectWallet);
 
 
+/*==========================
+      HAMBURGER MENU
+==========================*/
 
-    /*==========================
-      COUNTDOWN
-    ==========================*/
+const menuBtn = document.getElementById("menuBtn");
+const sideMenu = document.getElementById("sideMenu");
+const menuOverlay = document.getElementById("menuOverlay");
 
-    const launchDate = new Date("July 20, 2026 00:00:00").getTime();
+function closeMenu() {
 
-    const countdown = document.querySelector(".countdown");
+    menuBtn?.classList.remove("active");
+    sideMenu?.classList.remove("active");
+    menuOverlay?.classList.remove("active");
 
-    const days = document.getElementById("days");
-    const hours = document.getElementById("hours");
-    const minutes = document.getElementById("minutes");
-    const seconds = document.getElementById("seconds");
+}
 
-    function updateCountdown() {
+if (menuBtn && sideMenu && menuOverlay) {
 
-        const now = Date.now();
+    menuBtn.addEventListener("click", () => {
 
-        const distance = launchDate - now;
+        const isOpen =
+            sideMenu.classList.contains("active");
 
-        if (distance <= 0) {
+        if (isOpen) {
 
-            countdown.style.display = "none";
+            closeMenu();
 
-            clearInterval(timer);
+        } else {
 
-            return;
+            menuBtn.classList.add("active");
+            sideMenu.classList.add("active");
+            menuOverlay.classList.add("active");
 
         }
 
+    });
+
+    menuOverlay.addEventListener(
+        "click",
+        closeMenu
+    );
+
+    document
+        .querySelectorAll(".side-links a")
+        .forEach(link => {
+
+            link.addEventListener(
+                "click",
+                closeMenu
+            );
+
+        });
+
+}
+    /*==========================
+      COUNTDOWN
+==========================*/
+
+const launchDate = new Date(
+    "July 25, 2026 00:00:00"
+).getTime();
+
+const countdown = document.querySelector(".countdown");
+
+const days = document.getElementById("days");
+const hours = document.getElementById("hours");
+const minutes = document.getElementById("minutes");
+const seconds = document.getElementById("seconds");
+
+let timer = null;
+
+function updateCountdown() {
+
+    const now = Date.now();
+
+    const distance = launchDate - now;
+
+    if (distance <= 0) {
+
+        if (countdown) {
+            countdown.style.display = "none";
+        }
+
+        clearInterval(timer);
+
+        return;
+
+    }
+
+    if (days) {
+
         days.textContent = String(
-            Math.floor(distance / (1000 * 60 * 60 * 24))
+            Math.floor(
+                distance / (1000 * 60 * 60 * 24)
+            )
         ).padStart(2, "0");
+
+    }
+
+    if (hours) {
 
         hours.textContent = String(
             Math.floor(
@@ -106,6 +173,10 @@ document.addEventListener("DOMContentLoaded", () => {
             )
         ).padStart(2, "0");
 
+    }
+
+    if (minutes) {
+
         minutes.textContent = String(
             Math.floor(
                 (distance % (1000 * 60 * 60))
@@ -113,6 +184,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 (1000 * 60)
             )
         ).padStart(2, "0");
+
+    }
+
+    if (seconds) {
 
         seconds.textContent = String(
             Math.floor(
@@ -124,44 +199,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 
-    updateCountdown();
+}
 
-    const timer = setInterval(updateCountdown, 1000);
-        /*==========================
-      HAMBURGER MENU
-    ==========================*/
+timer = setInterval(updateCountdown, 1000);
 
-    const menuBtn = document.getElementById("menuBtn");
-    const sideMenu = document.getElementById("sideMenu");
-    const menuOverlay = document.getElementById("menuOverlay");
-
-    function closeMenu() {
-
-        menuBtn?.classList.remove("active");
-        sideMenu?.classList.remove("active");
-        menuOverlay?.classList.remove("active");
-
-    }
-
-    if (menuBtn && sideMenu && menuOverlay) {
-
-        menuBtn.addEventListener("click", () => {
-
-            menuBtn.classList.toggle("active");
-            sideMenu.classList.toggle("active");
-            menuOverlay.classList.toggle("active");
-
-        });
-
-        menuOverlay.addEventListener("click", closeMenu);
-
-        document.querySelectorAll(".side-links a").forEach(link => {
-
-            link.addEventListener("click", closeMenu);
-
-        });
-
-    }
+updateCountdown();
 
 
     /*==========================
